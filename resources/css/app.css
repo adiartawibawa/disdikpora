@@ -5,7 +5,3 @@
 .card {
     @apply rounded-md;
 }
-
-.btn {
-    @apply rounded-md;
-}

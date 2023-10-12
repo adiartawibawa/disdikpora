@@ -12,7 +12,7 @@
 </x-slot>
 
 <div>
-    <div class="grid md:grid-cols-3 col-span-3 gap-4 mb-4">
+    <div class="grid md:grid-cols-3 col-span-3 gap-4 mb-8 w-full">
         <div class="card w-full bg-base-100 shadow-xl">
             <div class="card-body">
                 <h2 class="card-title">Card title!</h2>

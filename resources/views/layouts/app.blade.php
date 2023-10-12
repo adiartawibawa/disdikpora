@@ -22,52 +22,53 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="bg-base-200 drawer lg:drawer-open">
-        <input id="drawer" type="checkbox" class="drawer-toggle">
-        <div class="drawer-content ">
-            {{-- navbar  --}}
-            <livewire:layout.navigation />
-            {{-- end navbar  --}}
+    <div>
+        <div class="bg-base-200 drawer lg:drawer-open">
+            <input id="drawer" type="checkbox" class="drawer-toggle">
+            <div class="drawer-content flex flex-col h-screen justify-between">
+                {{-- navbar  --}}
+                <livewire:layout.navigation />
+                {{-- end navbar  --}}
 
-            {{-- content  --}}
-            <div class="max-w-[100vw] px-6 xl:px-6 flex flex-col justify-between h-screen">
-                <!-- Page Heading -->
-                <div class="flex justify-between items-center py-5">
-                    @if (isset($header))
-                        {{ $header }}
-                    @endif
-                    <div class="text-sm breadcrumbs text-slate-500 hidden md:block">
-                        <ul>
-                            @if (isset($breadcrumbs))
-                                {{ $breadcrumbs }}
-                            @endif
-                        </ul>
+                {{-- content  --}}
+                <div class="max-w-[100vw] px-6 xl:px-6 pb-16 mb-auto bg-base-200">
+                    <!-- Page Heading -->
+                    <div class="flex justify-between items-center pt-5">
+                        @if (isset($header))
+                            {{ $header }}
+                        @endif
+                        <div class="text-sm breadcrumbs text-slate-500 hidden md:block">
+                            <ul>
+                                @if (isset($breadcrumbs))
+                                    {{ $breadcrumbs }}
+                                @endif
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="flex flex-col-reverse justify-between gap-6 xl:flex-row mb-auto">
-                    <div class="w-full max-w-full flex-grow pt-5">
-                        <!-- Page Content -->
-                        <main>
-                            {{ $slot }}
-                        </main>
-                    </div>
-                </div>
 
+                    <div class="flex flex-col-reverse justify-between gap-6 xl:flex-row">
+                        <div class="flex flex-col gap-6 pt-10 w-full">
+                            <!-- Page Content -->
+                            <main class="max-w-full flex-grow">
+                                {{ $slot }}
+                            </main>
+                        </div>
+                    </div>
+
+                </div>
+                {{-- end content  --}}
                 {{-- Footer --}}
                 <livewire:layout.footer />
-
             </div>
-            {{-- end content  --}}
 
-        </div>
-        <div class="drawer-side z-40" style="scroll-behavior: smooth; scroll-padding-top: 5rem;">
-            <label for="drawer" class="drawer-overlay" aria-label="Close menu"></label>
-            {{-- sidebar --}}
-            <livewire:layout.sidebar />
-            {{-- end sidebar --}}
+            <div class="drawer-side z-40" style="scroll-behavior: smooth; scroll-padding-top: 5rem;">
+                <label for="drawer" class="drawer-overlay" aria-label="Close menu"></label>
+                {{-- sidebar --}}
+                <livewire:layout.sidebar />
+                {{-- end sidebar --}}
+            </div>
         </div>
     </div>
-
 </body>
 
 </html>
