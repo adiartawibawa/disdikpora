@@ -14,11 +14,11 @@ export default {
         themes: [
             {
                 mytheme: {
-                    primary: "#641ae6",
-                    secondary: "#d926a9",
-                    accent: "#1fb2a6",
-                    neutral: "#2a323c",
-                    "base-100": "#1d232a",
+                    primary: "#570df8",
+                    secondary: "#FADFDE",
+                    accent: "#ab6766",
+                    neutral: "#2b3440",
+                    "base-100": "#ffffff",
                     info: "#3abff8",
                     success: "#36d399",
                     warning: "#fbbd23",
