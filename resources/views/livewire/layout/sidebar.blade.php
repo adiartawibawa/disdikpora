@@ -37,7 +37,10 @@
             <span>Master Data</span>
         </li>
         <li>
-            <a href="#"><x-icon-o-home-modern class="w-5 h-5 stroke-current" /><span>Sekolah</span></a>
+            <a href="{{ route('sekolah.all') }}">
+                <x-icon-o-home-modern class="w-5 h-5 stroke-current" />
+                <span>Sekolah</span>
+            </a>
         </li>
         <li>
             <a href="#"><x-icon-o-user-group class="w-5 h-5 stroke-current" /><span>GTK</span></a>

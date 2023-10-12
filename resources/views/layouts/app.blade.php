@@ -36,28 +36,26 @@
                     @if (isset($header))
                         {{ $header }}
                     @endif
-                    {{-- <div class="text-sm breadcrumbs">
+                    <div class="text-sm breadcrumbs text-slate-500 hidden md:block">
                         <ul>
-                            <li><a>Home</a></li>
-                            <li><a>Documents</a></li>
-                            <li>Add Document</li>
+                            @if (isset($breadcrumbs))
+                                {{ $breadcrumbs }}
+                            @endif
                         </ul>
-                    </div> --}}
+                    </div>
                 </div>
                 <div class="flex flex-col-reverse justify-between gap-6 xl:flex-row mb-auto">
-                    <div class="prose prose-sm md:prose-base w-full max-w-full flex-grow pt-5">
+                    <div class="w-full max-w-full flex-grow pt-5">
                         <!-- Page Content -->
                         <main>
                             {{ $slot }}
                         </main>
                     </div>
                 </div>
-                <footer class="footer footer-center py-4 bg-base-200 text-xs text-base-content">
-                    <aside class="flex flex-col md:flex-row w-full md:justify-between items-center">
-                        <div>Copyright © {{ date('Y') }} - {{ config('app.name') }}</div>
-                        <div>Made with ❤️ by Adi Arta Wibawa</div>
-                    </aside>
-                </footer>
+
+                {{-- Footer --}}
+                <livewire:layout.footer />
+
             </div>
             {{-- end content  --}}
 

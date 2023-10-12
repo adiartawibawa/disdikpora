@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Pages\Sekolahs\Sekolah;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    // Profile Pages
+    Route::view('profile', 'profile')->name('profile');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+    Route::middleware(['verified'])->group(function () {
+        // Dashboard Pages
+        Route::view('dashboard', 'dashboard')->name('dashboard');
 
-require __DIR__.'/auth.php';
+        // Sekolah Pages
+        Route::get('/sekolahs', Sekolah::class)->name('sekolah.all');
+    });
+});
+
+require __DIR__ . '/auth.php';
