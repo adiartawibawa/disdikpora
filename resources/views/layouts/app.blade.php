@@ -25,40 +25,41 @@
     <div>
         <div class="bg-base-200 drawer lg:drawer-open">
             <input id="drawer" type="checkbox" class="drawer-toggle">
-            <div class="drawer-content flex flex-col h-screen justify-between">
+            <div class="drawer-content">
                 {{-- navbar  --}}
                 <livewire:layout.navigation />
                 {{-- end navbar  --}}
-
-                {{-- content  --}}
-                <div class="max-w-[100vw] px-6 xl:px-6 pb-16 mb-auto bg-base-200">
-                    <!-- Page Heading -->
-                    <div class="flex justify-between items-center pt-5">
-                        @if (isset($header))
-                            {{ $header }}
-                        @endif
-                        <div class="text-sm breadcrumbs text-slate-500 hidden md:block">
-                            <ul>
-                                @if (isset($breadcrumbs))
-                                    {{ $breadcrumbs }}
-                                @endif
-                            </ul>
+                <div class="flex flex-col h-screen justify-between">
+                    {{-- content  --}}
+                    <div class="max-w-[100vw] px-6 xl:px-6 pb-16 mb-auto bg-base-200">
+                        <!-- Page Heading -->
+                        <div class="flex justify-between items-center pt-5">
+                            @if (isset($header))
+                                {{ $header }}
+                            @endif
+                            <div class="text-sm breadcrumbs text-slate-500 hidden md:block">
+                                <ul>
+                                    @if (isset($breadcrumbs))
+                                        {{ $breadcrumbs }}
+                                    @endif
+                                </ul>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="flex flex-col-reverse justify-between gap-6 xl:flex-row">
-                        <div class="flex flex-col gap-6 pt-10 w-full">
-                            <!-- Page Content -->
-                            <main class="max-w-full flex-grow">
-                                {{ $slot }}
-                            </main>
+                        <div class="flex flex-col-reverse justify-between gap-6 xl:flex-row">
+                            <div class="flex flex-col gap-6 pt-10 w-full">
+                                <!-- Page Content -->
+                                <main class="max-w-full flex-grow">
+                                    {{ $slot }}
+                                </main>
+                            </div>
                         </div>
-                    </div>
 
+                    </div>
+                    {{-- end content  --}}
+                    {{-- Footer --}}
+                    <livewire:layout.footer />
                 </div>
-                {{-- end content  --}}
-                {{-- Footer --}}
-                <livewire:layout.footer />
             </div>
 
             <div class="drawer-side z-40" style="scroll-behavior: smooth; scroll-padding-top: 5rem;">

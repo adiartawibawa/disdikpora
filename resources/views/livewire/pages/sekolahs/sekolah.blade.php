@@ -36,36 +36,38 @@
         <div class="card-body">
             <div class="card-title inline-flex justify-between items-center">
                 <h2>Data Sekolah</h2>
-                <div>
+                <div class="inline-flex items-center gap-1">
                     <button class="btn btn-primary btn-sm">
                         <x-icon-o-plus-circle class="w-5 h-5" />
                     </button>
-                    <button class="btn btn-sm">
-                        <x-icon-o-arrow-up-tray class="w-5 h-5" />
-                    </button>
-                    <button class="btn btn-sm">
-                        <x-icon-o-arrow-down-tray class="w-5 h-5" />
-                    </button>
+                    <div class="dropdown dropdown-end">
+                        <label tabindex="0" class="btn btn-ghost btn-sm">
+                            <x-icon-o-ellipsis-vertical class="w-4 h-4" />
+                        </label>
+                        <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                            <li><a class="text-sm">Import from Excel</a></li>
+                            <li><a class="text-sm">Export to Excel</a></li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
-            <div class="pb-4 flex flex-row items-center justify-between">
-                <div class="inline-flex gap-3">
+            <div class="pb-4 flex flex-col md:flex-row items-center md:items-end md:justify-between gap-4 md:gap-0">
+                <div class="inline-flex flex-col md:flex-row gap-2 w-full md:w-2/3">
                     <div class="form-control w-full max-w-xs">
                         <label class="label">
-                            <span class="label-text">Select</span>
+                            <span class="label-text">Per page</span>
                         </label>
                         <select class="select select-bordered">
-                            <option disabled selected>Pick one</option>
-                            <option>Star Wars</option>
-                            <option>Harry Potter</option>
-                            <option>Lord of the Rings</option>
-                            <option>Planet of the Apes</option>
-                            <option>Star Trek</option>
+                            <option value="10" selected>10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
                         </select>
                     </div>
                     <div class="form-control w-full max-w-xs">
                         <label class="label">
-                            <span class="label-text">Select</span>
+                            <span class="label-text">Filter by</span>
                         </label>
                         <select class="select select-bordered">
                             <option disabled selected>Pick one</option>
@@ -77,8 +79,9 @@
                         </select>
                     </div>
                 </div>
-                <div>
-                    <input type="text" placeholder="Type here" class="input w-full max-w-xs" />
+                <div class="w-full inline-flex justify-end">
+                    <input type="text" placeholder="Search for items by"
+                        class="input input-bordered w-full md:max-w-xs" />
                 </div>
             </div>
             <div class="overflow-x-auto">
@@ -132,6 +135,9 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="card-actions justify-end">
+
             </div>
         </div>
     </div>
