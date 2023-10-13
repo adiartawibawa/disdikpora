@@ -94,50 +94,50 @@
                                     <input type="checkbox" class="checkbox" />
                                 </label>
                             </th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>NPSN</th>
+                            <th>Satuan Pendidikan</th>
+                            <th>Status</th>
+                            <th>Desa</th>
+                            <th>Alamat</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- row 1 -->
-                        <tr>
-                            <th>
-                                <label>
-                                    <input type="checkbox" class="checkbox" />
-                                </label>
-                            </th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                        </tr>
-                        <!-- row 2 -->
-                        <tr class="hover">
-                            <th>
-                                <label>
-                                    <input type="checkbox" class="checkbox" />
-                                </label>
-                            </th>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            <td>Purple</td>
-                        </tr>
-                        <!-- row 3 -->
-                        <tr>
-                            <th>
-                                <label>
-                                    <input type="checkbox" class="checkbox" />
-                                </label>
-                            </th>
-                            <td>Brice Swyre</td>
-                            <td>Tax Accountant</td>
-                            <td>Red</td>
-                        </tr>
+                        @forelse ($sekolahs as $item)
+                            <tr>
+                                <th>
+                                    <label>
+                                        <input type="checkbox" class="checkbox" />
+                                    </label>
+                                </th>
+                                <td>{{ $item->npsn }}</td>
+                                <td>{{ $item->nama }}</td>
+                                <td>{{ $item->status }}</td>
+                                <td>{{ $item->village_code }}</td>
+                                <td>{{ $item->alamat }}</td>
+                                <th>
+                                    <button class="btn btn-sm btn-ghost text-xs">
+                                        <x-icon-o-pencil-square class="h-4 w-4" />
+                                    </button>
+                                    <button class="btn btn-sm btn-ghost text-xs">
+                                        <x-icon-o-map-pin class="h-4 w-4" />
+                                    </button>
+                                    <button class="btn btn-sm btn-ghost text-error text-xs">
+                                        <x-icon-o-trash class="h-4 w-4" />
+                                    </button>
+                                </th>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="7">
+                                    <x-empty-data />
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
             <div class="card-actions justify-end">
-
+                {!! $sekolahs->links() !!}
             </div>
         </div>
     </div>
