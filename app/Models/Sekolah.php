@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Laravolt\Indonesia\Models\Village;
+use MatanYadaev\EloquentSpatial\Objects\Point;
+use MatanYadaev\EloquentSpatial\Traits\HasSpatial;
 
 class Sekolah extends Model
 {
-    use HasUuids;
+    use HasUuids, HasSpatial;
 
     protected $fillable = [
         'npsn',
@@ -18,6 +21,19 @@ class Sekolah extends Model
         'village_code',
         'lokasi'
     ];
+
+    protected $appends = [
+        'geo_lokasi'
+    ];
+
+    protected $casts = [
+        'lokasi' => Point::class,
+    ];
+
+    public function getGeoLokasiAttribute()
+    {
+        return $this->lokasi->toJson();
+    }
 
     public function village()
     {

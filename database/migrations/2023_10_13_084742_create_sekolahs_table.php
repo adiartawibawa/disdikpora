@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('status', ['negeri', 'swasta'])->nullable();
             $table->text('alamat');
             $table->char('village_code', 10);
-            $table->point('lokasi');
+            $table->point('lokasi', 4326);
             $table->timestamps();
 
             $table->foreign('village_code')
