@@ -5,10 +5,10 @@ namespace App\Livewire\Pages\Sekolahs;
 use App\Jobs\ProcessImportSekolah;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Storage;
-use Livewire\Component;
 use Livewire\WithFileUploads;
+use LivewireUI\Modal\ModalComponent;
 
-class Import extends Component
+class Import extends ModalComponent
 {
     use WithFileUploads;
 
@@ -17,6 +17,24 @@ class Import extends Component
     public $importing = false;
     public $importFilePath;
     public $importFinished = false;
+
+    protected static array $maxWidths = [
+        'sm' => 'sm:max-w-sm',
+        'md' => 'sm:max-w-md',
+        'lg' => 'sm:max-w-lg',
+        'xl' => 'sm:max-w-xl',
+        '2xl' => 'sm:max-w-2xl',
+        '3xl' => 'sm:max-w-3xl',
+        '4xl' => 'sm:max-w-4xl',
+        '5xl' => 'sm:max-w-5xl',
+        '6xl' => 'sm:max-w-6xl',
+        '7xl' => 'sm:max-w-7xl',
+    ];
+
+    public static function modalMaxWidth(): string
+    {
+        return '2xl';
+    }
 
     public function import()
     {
@@ -52,6 +70,8 @@ class Import extends Component
             $this->importing = false;
         }
     }
+
+
 
     public function render()
     {

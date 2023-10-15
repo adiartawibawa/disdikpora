@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\Sekolahs;
 
 use App\Models\Sekolah as ModelsSekolah;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 

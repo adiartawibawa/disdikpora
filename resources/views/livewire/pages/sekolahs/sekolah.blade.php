@@ -19,12 +19,7 @@
         <div class="card w-full bg-base-100 shadow-xl">
             <div class="card-body">
                 <h2 class="card-title">Card title!</h2>
-                {{-- <p>If a dog chews shoes whose shoes does he choose?</p> --}}
-                <div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200">
-                    <div class="px-4 py-5 sm:p-6">
-                        <x-maps-leaflet :centerPoint="['lat' => 52.16, 'long' => 5]"></x-maps-leaflet>
-                    </div>
-                </div>
+                <p>If a dog chews shoes whose shoes does he choose?</p>
             </div>
         </div>
         <div class="card w-full bg-base-100 shadow-xl">
@@ -55,8 +50,8 @@
                         </label>
                         <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
-                                <a wire:click.prevent="$dispatch('open-modal', 'import-data-from-excel')" href="#"
-                                    class="text-sm">Import from Excel</a>
+                                <a wire:click.prevent="$dispatch('openModal', {component:'pages.sekolahs.import'})"
+                                    href="#" class="text-sm">Import from Excel</a>
                             </li>
                             <li><a href="#" class="text-sm">Export to Excel</a></li>
                         </ul>
@@ -206,7 +201,10 @@
                                     <button class="btn btn-sm btn-ghost text-xs">
                                         <x-icon-o-pencil-square class="h-4 w-4" />
                                     </button>
-                                    <button class="btn btn-sm btn-ghost text-xs">
+                                    {{-- lat:{{ $item->lokasi->latitude }}, lon:{{ $item->lokasi->longitude }} --}}
+                                    <button
+                                        wire:click="$dispatch('open-modal','show-location',{ lat: {{ $item->lokasi->latitude }}, lon: {{ $item->lokasi->longitude }} })"
+                                        class="btn btn-sm btn-ghost text-xs">
                                         <x-icon-o-map-pin class="h-4 w-4" />
                                     </button>
                                     <button class="btn btn-sm btn-ghost text-error text-xs">
@@ -230,8 +228,16 @@
         </div>
     </div>
 
+    {{-- Location Modal --}}
+    {{-- <x-modal name="show-location" :data="$dataLocation" :show="$errors->isNotEmpty()"> --}}
+    {{-- <p>Lokasi Latitude: {{ $locationData['lat'] }}</p>
+        <p>Lokasi Longitude: {{ $locationData['lon'] }}</p> --}}
+    {{-- @livewire('maps.map', ['latitude' => $lat, 'longitude' => $lon, 'zoom' => 13]) --}}
+    {{-- </x-modal> --}}
+    {{-- End Location Modal --}}
+
     {{-- Import modal --}}
-    <x-modal name="import-data-from-excel" :show="$errors->isNotEmpty()" focusable>
+    {{-- <x-modal name="import-data-from-excel" :show="$errors->isNotEmpty()">
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title">Import data sekolah dari excel</h2>
@@ -259,7 +265,7 @@
                 </div>
             </div>
         </div>
-    </x-modal>
+    </x-modal> --}}
     {{-- End Import modal --}}
 
 </div>
