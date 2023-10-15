@@ -1,3 +1,6 @@
+@prepend('styles')
+@endprepend
+
 @section('title', 'Dashboard')
 
 <x-slot name="header">
@@ -16,7 +19,12 @@
         <div class="card w-full bg-base-100 shadow-xl">
             <div class="card-body">
                 <h2 class="card-title">Card title!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
+                {{-- <p>If a dog chews shoes whose shoes does he choose?</p> --}}
+                <div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200">
+                    <div class="px-4 py-5 sm:p-6">
+                        <x-maps-leaflet :centerPoint="['lat' => 52.16, 'long' => 5]"></x-maps-leaflet>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="card w-full bg-base-100 shadow-xl">
@@ -36,7 +44,7 @@
         <div class="card-body">
             <div class="card-title inline-flex justify-between items-center">
                 <h2>Data Sekolah</h2>
-                @livewire('pages.sekolahs.import')
+
                 <div class="inline-flex items-center gap-1">
                     <button class="btn btn-primary btn-sm">
                         <x-icon-o-plus-circle class="w-5 h-5" />
@@ -46,7 +54,10 @@
                             <x-icon-o-ellipsis-vertical class="w-4 h-4" />
                         </label>
                         <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><a href="#" class="text-sm">Import from Excel</a></li>
+                            <li>
+                                <a wire:click.prevent="$dispatch('open-modal', 'import-data-from-excel')" href="#"
+                                    class="text-sm">Import from Excel</a>
+                            </li>
                             <li><a href="#" class="text-sm">Export to Excel</a></li>
                         </ul>
                     </div>
@@ -67,14 +78,14 @@
                         </select>
                     </div>
                     <div class="form-control w-full max-w-xs">
-                        <label class="label">
+                        {{-- <label class="label">
                             <span class="label-text">Filter by</span>
                         </label>
                         <select class="select select-bordered">
                             <option disabled selected>Pick one</option>
                             <option>Kecamatan</option>
                             <option>Desa</option>
-                        </select>
+                        </select> --}}
                     </div>
                 </div>
                 <div class="w-full inline-flex justify-end">
@@ -218,4 +229,37 @@
             </div>
         </div>
     </div>
+
+    {{-- Import modal --}}
+    <x-modal name="import-data-from-excel" :show="$errors->isNotEmpty()" focusable>
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Import data sekolah dari excel</h2>
+                <p class="text-sm">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facere unde
+                    cupiditate autem! Repudiandae corporis vel, ducimus nam eum quia nihil quae perferendis, provident
+                    id repellat laborum facere libero esse.
+                </p>
+                <div class="py-2 text-sm inline-flex justify-start items-start">
+                    <p>
+                        Silahkan gunakan format excel berikut
+                        <a href="{{ asset('format/import_data_sekolah.xlsx') }}" download
+                            class="ml-2 text-primary underline">
+                            format data sekolah
+                        </a>
+                    </p>
+                </div>
+
+                <div class="py-4 w-full">
+                    @livewire('pages.sekolahs.import')
+                </div>
+
+                <div class="card-actions justify-end">
+                    <button x-on:click="$dispatch('close')" class="btn btn-active">{{ __('Close') }}</button>
+                </div>
+            </div>
+        </div>
+    </x-modal>
+    {{-- End Import modal --}}
+
 </div>

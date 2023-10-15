@@ -2,12 +2,9 @@
 
 namespace App\Livewire\Pages\Sekolahs;
 
-use App\Imports\SekolahsImport;
 use App\Models\Sekolah as ModelsSekolah;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Maatwebsite\Excel\Facades\Excel;
 
 class Sekolah extends Component
 {
