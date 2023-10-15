@@ -201,9 +201,8 @@
                                     <button class="btn btn-sm btn-ghost text-xs">
                                         <x-icon-o-pencil-square class="h-4 w-4" />
                                     </button>
-                                    {{-- lat:{{ $item->lokasi->latitude }}, lon:{{ $item->lokasi->longitude }} --}}
                                     <button
-                                        wire:click="$dispatch('open-modal','show-location',{ lat: {{ $item->lokasi->latitude }}, lon: {{ $item->lokasi->longitude }} })"
+                                        wire:click="$dispatch('openModal',{ component:'pages.sekolahs.location', arguments:{sekolah: '{{ $item->id }}'}})"
                                         class="btn btn-sm btn-ghost text-xs">
                                         <x-icon-o-map-pin class="h-4 w-4" />
                                     </button>
@@ -227,45 +226,5 @@
             </div>
         </div>
     </div>
-
-    {{-- Location Modal --}}
-    {{-- <x-modal name="show-location" :data="$dataLocation" :show="$errors->isNotEmpty()"> --}}
-    {{-- <p>Lokasi Latitude: {{ $locationData['lat'] }}</p>
-        <p>Lokasi Longitude: {{ $locationData['lon'] }}</p> --}}
-    {{-- @livewire('maps.map', ['latitude' => $lat, 'longitude' => $lon, 'zoom' => 13]) --}}
-    {{-- </x-modal> --}}
-    {{-- End Location Modal --}}
-
-    {{-- Import modal --}}
-    {{-- <x-modal name="import-data-from-excel" :show="$errors->isNotEmpty()">
-        <div class="card">
-            <div class="card-body">
-                <h2 class="card-title">Import data sekolah dari excel</h2>
-                <p class="text-sm">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facere unde
-                    cupiditate autem! Repudiandae corporis vel, ducimus nam eum quia nihil quae perferendis, provident
-                    id repellat laborum facere libero esse.
-                </p>
-                <div class="py-2 text-sm inline-flex justify-start items-start">
-                    <p>
-                        Silahkan gunakan format excel berikut
-                        <a href="{{ asset('format/import_data_sekolah.xlsx') }}" download
-                            class="ml-2 text-primary underline">
-                            format data sekolah
-                        </a>
-                    </p>
-                </div>
-
-                <div class="py-4 w-full">
-                    @livewire('pages.sekolahs.import')
-                </div>
-
-                <div class="card-actions justify-end">
-                    <button x-on:click="$dispatch('close')" class="btn btn-active">{{ __('Close') }}</button>
-                </div>
-            </div>
-        </div>
-    </x-modal> --}}
-    {{-- End Import modal --}}
 
 </div>
