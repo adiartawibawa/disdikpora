@@ -40,13 +40,13 @@ class Sekolah extends Component
         $this->selectPage = false;
     }
 
-    public function selectAll()
+    public function selectsAll()
     {
         $this->selectAll = true;
         $this->checked = $this->sekolahsQuery->pluck('id')->map(fn ($item) => (string) $item)->toArray();
     }
 
-    public function unselectAll()
+    public function unselectsAll()
     {
         $this->checked = [];
         $this->selectAll = false;

@@ -98,7 +98,7 @@
                                 <div>
                                     You have selected all <strong>{{ $sekolahs->total() }}</strong> items.
                                     <a href="#" class="underline text-indigo-800 ml-2"
-                                        wire:click.prevent="unselectAll">Batalkan Semua</a>
+                                        wire:click.prevent="unselectsAll">Batalkan Semua</a>
                                 </div>
                             @else
                                 <div>
@@ -107,7 +107,7 @@
                                     All
                                     <strong>{{ $sekolahs->total() }}</strong>?
                                     <a href="#" class="underline text-indigo-800 ml-2"
-                                        wire:click.prevent="selectAll">Pilih Semua</a>
+                                        wire:click.prevent="selectsAll">Pilih Semua</a>
                                 </div>
                             @endif
 
@@ -222,7 +222,7 @@
                 </table>
             </div>
             <div class="card-actions justify-end">
-                {!! $sekolahs->links() !!}
+                {!! $sekolahs->onEachSide(5)->links() !!}
             </div>
         </div>
     </div>
