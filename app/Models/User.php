@@ -28,7 +28,8 @@ class User extends Authenticatable implements HasMedia
         'email',
         'password',
         'avatar',
-        'username'
+        'username',
+        'current_role_id',
     ];
 
     /**
@@ -64,5 +65,10 @@ class User extends Authenticatable implements HasMedia
     public function getVerifiedAtFormattedAttribute()
     {
         return Carbon::parse($this->attributes['email_verified_at'])->format('d, M Y H:i:s');
+    }
+
+    public function hasGtk()
+    {
+        return $this->hasOne(Gtk::class, 'user_id', 'id');
     }
 }

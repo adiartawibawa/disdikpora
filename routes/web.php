@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Pages\Gtks\Gtk;
 use App\Livewire\Pages\Sekolahs\Sekolah;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,9 @@ Route::middleware(['auth'])->group(function () {
 
         // Sekolah Pages
         Route::get('/sekolahs', Sekolah::class)->name('sekolah.all');
+
+        // Gtks Pages
+        Route::get('/gtks', Gtk::class)->name('gtk.all');
     });
 });
 

@@ -40,7 +40,10 @@
                 </a>
             </li>
             <li>
-                <a href="#"><x-icon-o-user-group class="w-5 h-5 stroke-current" /><span>GTK</span></a>
+                <a href="{{ route('gtk.all') }}">
+                    <x-icon-o-user-group class="w-5 h-5 stroke-current" />
+                    <span>GTK</span>
+                </a>
             </li>
             </li>
         </ul>
