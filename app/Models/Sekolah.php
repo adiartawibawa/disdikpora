@@ -16,6 +16,7 @@ class Sekolah extends Model
     protected $fillable = [
         'npsn',
         'nama',
+        'jenjang',
         'status',
         'alamat',
         'village_code',
@@ -45,6 +46,7 @@ class Sekolah extends Model
         $term = "%$term%";
         $query->where(function ($query) use ($term) {
             $query->where('nama', 'like', $term)
+                ->orWhere('jenjang', 'like', $term)
                 ->orWhere('status', 'like', $term)
                 ->orWhere('alamat', 'like', $term)
                 ->orWhereHas('village', function ($query) use ($term) {

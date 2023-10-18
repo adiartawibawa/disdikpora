@@ -21,6 +21,7 @@ class SekolahsImport implements ToModel, WithHeadingRow, WithChunkReading
         return new Sekolah([
             'npsn' => $row['npsn'],
             'nama' => $row['nama_satuan_pendidikan'],
+            'jenjang' => strtolower($row['jenjang']),
             'status' => $row['status_sekolah'],
             'alamat' => $row['alamat'],
             'village_code' => $this->getVillageCode($row['kecamatan'], $row['desa']),

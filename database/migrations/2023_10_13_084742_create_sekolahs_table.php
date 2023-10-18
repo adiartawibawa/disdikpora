@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('npsn', 8);
             $table->string('nama');
+            $table->enum('jenjang', ['paud', 'tk', 'sd', 'smp']);
             $table->enum('status', ['negeri', 'swasta'])->nullable();
             $table->text('alamat');
             $table->char('village_code', 10);
