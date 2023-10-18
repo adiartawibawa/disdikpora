@@ -35,4 +35,15 @@ class Gtk extends Model
     {
         return $this->hasMany(GtkInfo::class);
     }
+
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('nama', 'like', $term)
+                ->orWhere('nik', 'like', $term)
+                ->orWhere('nuptk', 'like', $term)
+                ->orWhere('nip', 'like', $term);
+        });
+    }
 }

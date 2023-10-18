@@ -38,7 +38,7 @@
     <div class="card w-full bg-base-100 shadow-xl">
         <div class="card-body">
             <div class="card-title inline-flex justify-between items-center">
-                <h2>Data Sekolah</h2>
+                <h2>Data Guru & Tenaga Pendidik</h2>
 
                 <div class="inline-flex items-center gap-1">
                     <button class="btn btn-primary btn-sm">
@@ -62,7 +62,7 @@
             <div class="pb-4 flex flex-col md:flex-row items-center md:items-end md:justify-between gap-4 md:gap-0">
                 <div class="inline-flex flex-col md:flex-row gap-2 w-full md:w-2/3">
                     <div class="form-control w-full max-w-xs">
-                        {{-- <label class="label">
+                        <label class="label">
                             <span class="label-text">Per page</span>
                         </label>
                         <select id="paginate" wire:model.live="paginate" class="select select-bordered">
@@ -70,7 +70,7 @@
                             <option value="25">25</option>
                             <option value="50">50</option>
                             <option value="100">100</option>
-                        </select> --}}
+                        </select>
                     </div>
                     <div class="form-control w-full max-w-xs">
                         {{-- <label class="label">
@@ -83,20 +83,20 @@
                         </select> --}}
                     </div>
                 </div>
-                {{-- <div class="w-full inline-flex justify-end">
+                <div class="w-full inline-flex justify-end">
                     <input type="text" placeholder="Search for items by" id="search"
                         wire:model.live.debounce.500ms="search" class="input input-bordered w-full md:max-w-xs" />
-                </div> --}}
+                </div>
             </div>
 
             {{-- selected data  --}}
             <div class="flex w-full items-center justify-between">
-                {{-- <div class="text-sm text-gray-800">
+                <div class="text-sm text-gray-800">
                     @if ($selectPage)
                         <div class="mb-4">
                             @if ($selectAll)
                                 <div>
-                                    You have selected all <strong>{{ $sekolahs->total() }}</strong> items.
+                                    You have selected all <strong>{{ $gtks->total() }}</strong> items.
                                     <a href="#" class="underline text-indigo-800 ml-2"
                                         wire:click.prevent="unselectsAll">Batalkan Semua</a>
                                 </div>
@@ -105,7 +105,7 @@
                                     You have selected <strong>{{ count($checked) }}</strong> items, Do you want to
                                     Select
                                     All
-                                    <strong>{{ $sekolahs->total() }}</strong>?
+                                    <strong>{{ $gtks->total() }}</strong>?
                                     <a href="#" class="underline text-indigo-800 ml-2"
                                         wire:click.prevent="selectsAll">Pilih Semua</a>
                                 </div>
@@ -113,8 +113,8 @@
 
                         </div>
                     @endif
-                </div> --}}
-                {{-- <div>
+                </div>
+                <div>
                     @if ($checked)
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
@@ -147,7 +147,7 @@
                             </x-slot>
                         </x-dropdown>
                     @endif
-                </div> --}}
+                </div>
             </div>
             {{-- end selected data  --}}
 
@@ -155,32 +155,23 @@
                 <table class="table">
                     <!-- head -->
                     <thead>
-                        {{-- <tr>
+                        <tr>
                             <th>
                                 <label>
                                     <input type="checkbox" class="checkbox" wire:model.live="selectPage" />
                                 </label>
                             </th>
                             <th>
-                                NPSN
-                                <span wire:click="sortBy('npsn')" class="cursor-pointer">
-                                    @if ($sortColumnName === 'npsn' && $sortDirection === 'asc')
-                                        <x-icon-o-bars-arrow-up class="w-4 h-4 " />
-                                    @else
-                                        <x-icon-o-bars-arrow-down' class="w-4 h-4 " />
-                                    @endif
-                                </span>
+                                Nama
                             </th>
-                            <th>
-                                Satuan Pendidikan
-                            </th>
-                            <th>Status</th>
-                            <th>Desa</th>
-                            <th>Alamat</th>
-                        </tr> --}}
+                            <th>NIP</th>
+                            <th>NUPTK</th>
+                            <th>Status Kepegawaian</th>
+                            <th>No. Telp</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        {{-- @forelse ($sekolahs as $item)
+                        @forelse ($gtks as $item)
                             <tr>
                                 <th>
                                     <label>
@@ -188,23 +179,16 @@
                                             value="{{ $item->id }}" wire:model.live="checked" />
                                     </label>
                                 </th>
-                                <td>{{ $item->npsn }}</td>
                                 <td>{{ $item->nama }}</td>
-                                <td>{{ Str::ucfirst($item->status) }}</td>
+                                <td>{{ $item->nip }}</td>
+                                <td>{{ $item->nuptk }}</td>
                                 <td>
-                                    @foreach ($item->village as $desa)
-                                        {{ Str::ucfirst(Str::lower($desa->name)) }}
-                                    @endforeach
+                                    {{ $item->status_kepegawaian }}
                                 </td>
-                                <td>{{ $item->alamat }}</td>
+                                <td>{{ $item->no_telp }}</td>
                                 <th>
                                     <button class="btn btn-sm btn-ghost text-xs">
                                         <x-icon-o-pencil-square class="h-4 w-4" />
-                                    </button>
-                                    <button
-                                        wire:click="$dispatch('openModal',{ component:'pages.sekolahs.location', arguments:{sekolah: '{{ $item->id }}'}})"
-                                        class="btn btn-sm btn-ghost text-xs">
-                                        <x-icon-o-map-pin class="h-4 w-4" />
                                     </button>
                                     <button class="btn btn-sm btn-ghost text-error text-xs">
                                         <x-icon-o-trash class="h-4 w-4" />
@@ -217,12 +201,12 @@
                                     <x-empty-data />
                                 </td>
                             </tr>
-                        @endforelse --}}
+                        @endforelse
                     </tbody>
                 </table>
             </div>
             <div class="card-actions justify-end">
-                {{-- {!! $sekolahs->onEachSide(5)->links() !!} --}}
+                {!! $gtks->onEachSide(5)->links() !!}
             </div>
         </div>
     </div>
