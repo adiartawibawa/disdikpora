@@ -16,24 +16,11 @@
 
 <div>
     <div class="grid md:grid-cols-3 col-span-3 gap-4 mb-8 w-full">
-        <div class="card w-full bg-base-100 shadow-xl">
-            <div class="card-body">
-                <h2 class="card-title">Card title!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-            </div>
-        </div>
-        <div class="card w-full bg-base-100 shadow-xl">
-            <div class="card-body">
-                <h2 class="card-title">Card title!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-            </div>
-        </div>
-        <div class="card w-full bg-base-100 shadow-xl">
-            <div class="card-body">
-                <h2 class="card-title">Card title!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-            </div>
-        </div>
+        <livewire:components.stats.sekolah />
+
+        <livewire:components.stats.grafik-sekolah />
+
+        <livewire:components.stats.peta-sekolah />
     </div>
     <div class="card w-full bg-base-100 shadow-xl">
         <div class="card-body">
