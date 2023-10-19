@@ -15,6 +15,10 @@ class GtkInfo extends Model
         'informasi'
     ];
 
+    // protected $casts = [
+    //     'informasi' => 'array'
+    // ];
+
     public function gtk()
     {
         return $this->belongsTo(Gtk::class);

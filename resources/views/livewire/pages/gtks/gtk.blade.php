@@ -1,6 +1,3 @@
-@prepend('styles')
-@endprepend
-
 @section('title', 'Dashboard')
 
 <x-slot name="header">
@@ -16,24 +13,25 @@
 
 <div>
     <div class="grid md:grid-cols-3 col-span-3 gap-4 mb-8 w-full">
-        <div class="card w-full bg-base-100 shadow-xl">
-            <div class="card-body">
-                <h2 class="card-title">Card title!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-            </div>
-        </div>
-        <div class="card w-full bg-base-100 shadow-xl">
-            <div class="card-body">
-                <h2 class="card-title">Card title!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-            </div>
-        </div>
-        <div class="card w-full bg-base-100 shadow-xl">
-            <div class="card-body">
-                <h2 class="card-title">Card title!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-            </div>
-        </div>
+
+        {{-- Component Guru  --}}
+        <livewire:components.stats.info-gtk type="guru" title="Guru" :illustration="url(
+            'https://img.freepik.com/free-vector/illustration-character-civil-servants-indonesia-wearing-work-uniforms_10045-683.jpg?w=740&t=st=1697701660~exp=1697702260~hmac=ccc4db9182827fd9e5d79cb829958579ff3b0db2b72f9a77815b23b43326d15e',
+        )" />
+        {{-- End Component Guru  --}}
+
+        {{-- Component Kepala Sekolah  --}}
+        <livewire:components.stats.info-gtk type="kepsek" title="Kepala Sekolah" :illustration="url(
+            'https://img.freepik.com/free-vector/back-back-concept-illustration_114360-5999.jpg?w=740&t=st=1697705057~exp=1697705657~hmac=cf4b72ca07d4261b6123a3f8da017e742825ca23e485532961aa811a33aa403a',
+        )" />
+        {{-- End Component Kepala Sekolah  --}}
+
+        {{-- Component Tendik  --}}
+        <livewire:components.stats.info-gtk type="tendik" title="Tenaga Kependidikan" :illustration="url(
+            'https://img.freepik.com/free-vector/xavector-illustration-civil-servants-indonesia-with-various-stylish-poses_10045-740.jpg?w=740&t=st=1697704944~exp=1697705544~hmac=55f13175686a39e31b4251370f8a1f5f148e4a4f3042ae53a3926b446cb0b7a1',
+        )" />
+        {{-- End Component Tendik  --}}
+
     </div>
     <div class="card w-full bg-base-100 shadow-xl">
         <div class="card-body">

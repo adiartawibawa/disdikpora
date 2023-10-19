@@ -101,7 +101,7 @@ class Gtk extends Component
     public function render()
     {
         return view('livewire.pages.gtks.gtk', [
-            'gtks' => $this->gtks
+            'gtks' => $this->gtks,
         ])->layout('layouts.app');
     }
 }
