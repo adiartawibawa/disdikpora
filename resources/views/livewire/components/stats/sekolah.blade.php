@@ -124,8 +124,8 @@
                 <h3 class="text-3xl font-bold text-gray-700 dark:text-white">{{ $sekolah }}</h3>
             </div>
         </div>
-        <hr>
-        <div>
+
+        {{-- <div>
             @foreach ($jenjang as $item)
                 @foreach ($item as $key => $value)
                     <div class="flex flex-row items-center justify-between hover:text-primary cursor-pointer">
@@ -135,11 +135,6 @@
                 @endforeach
             @endforeach
 
-        </div>
-        <table class="w-full text-gray-600 dark:text-gray-200">
-            <tbody>
-
-            </tbody>
-        </table>
+        </div> --}}
     </div>
 </div>

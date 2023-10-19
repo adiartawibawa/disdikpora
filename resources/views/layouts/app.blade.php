@@ -76,6 +76,8 @@
 
     @livewire('wire-elements-modal')
 
+    @livewireChartsScripts
+
     @stack('scripts')
 </body>
 
