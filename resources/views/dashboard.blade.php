@@ -12,43 +12,26 @@
         <li class="text-primary">Dashboard</li>
     </x-slot>
 
-    <div class="grid grid-rows-4 lg:grid-cols-4 col-span-4 gap-4">
-        <div class="card w-full bg-base-100 shadow-xl">
-            <div class="card-body flex flex-row items-center justify-start gap-4">
-                <x-icon-o-building-office-2 class="w-8 h-8 text-primary" />
-                <div class="text-base-content">
-                    <h2 class="text-lg">Sekolah</h2>
-                    <p class="text-2xl font-black">88</p>
-                </div>
-            </div>
-        </div>
-        <div class="card w-full bg-base-100 shadow-xl">
-            <div class="card-body flex flex-row items-center justify-start gap-4">
-                <x-icon-o-building-office-2 class="w-8 h-8 text-primary" />
-                <div class="text-base-content">
-                    <h2 class="text-lg">Kepala Sekolah</h2>
-                    <p class="text-2xl font-black">88</p>
-                </div>
-            </div>
-        </div>
-        <div class="card w-full bg-base-100 shadow-xl">
-            <div class="card-body flex flex-row items-center justify-start gap-4">
-                <x-icon-o-user-group class="w-8 h-8 text-primary" />
-                <div class="text-base-content">
-                    <h2 class="text-lg">Guru</h2>
-                    <p class="text-2xl font-black">250</p>
-                </div>
-            </div>
-        </div>
-        <div class="card w-full bg-base-100 shadow-xl">
-            <div class="card-body flex flex-row items-center justify-start gap-4">
-                <x-icon-o-user-group class="w-8 h-8 text-primary" />
-                <div class="text-base-content">
-                    <h2 class="text-lg">Tendik</h2>
-                    <p class="text-2xl font-black">88</p>
-                </div>
-            </div>
-        </div>
+    <div class="grid md:grid-cols-2 col-span-2 gap-4 mb-8 w-full">
+        <livewire:components.stats.sekolah />
+        <livewire:components.stats.peta-sekolah />
+    </div>
+    <div class="grid md:grid-cols-3 col-span-3 gap-4 mb-8 w-full">
+        {{-- Component Guru  --}}
+        <livewire:components.stats.info-gtk type="guru" title="Guru" :illustration="url(
+            'https://img.freepik.com/free-vector/illustration-character-civil-servants-indonesia-wearing-work-uniforms_10045-683.jpg?w=740&t=st=1697701660~exp=1697702260~hmac=ccc4db9182827fd9e5d79cb829958579ff3b0db2b72f9a77815b23b43326d15e',
+        )" />
+        {{-- End Component Guru  --}}
+        {{-- Component Kepala Sekolah  --}}
+        <livewire:components.stats.info-gtk type="kepsek" title="Kepala Sekolah" :illustration="url(
+            'https://img.freepik.com/free-vector/back-back-concept-illustration_114360-5999.jpg?w=740&t=st=1697705057~exp=1697705657~hmac=cf4b72ca07d4261b6123a3f8da017e742825ca23e485532961aa811a33aa403a',
+        )" />
+        {{-- End Component Kepala Sekolah  --}}
+        {{-- Component Tendik  --}}
+        <livewire:components.stats.info-gtk type="tendik" title="Tenaga Kependidikan" :illustration="url(
+            'https://img.freepik.com/free-vector/xavector-illustration-civil-servants-indonesia-with-various-stylish-poses_10045-740.jpg?w=740&t=st=1697704944~exp=1697705544~hmac=55f13175686a39e31b4251370f8a1f5f148e4a4f3042ae53a3926b446cb0b7a1',
+        )" />
+        {{-- End Component Tendik  --}}
     </div>
 
 

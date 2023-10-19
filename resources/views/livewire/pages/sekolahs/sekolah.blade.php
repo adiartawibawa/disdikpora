@@ -15,12 +15,15 @@
 </x-slot>
 
 <div>
-    <div class="grid md:grid-cols-3 col-span-3 gap-4 mb-8 w-full">
-        <livewire:components.stats.sekolah />
-
-        <livewire:components.stats.grafik-sekolah />
-
-        <livewire:components.stats.peta-sekolah />
+    <div class="grid md:grid-cols-2 col-span-2 gap-4 mb-8 w-full">
+        <div class="flex flex-col items-center gap-4">
+            <livewire:components.stats.sekolah />
+            <livewire:components.stats.grafik-sekolah />
+        </div>
+        <div class="flex flex-col items-center gap-4">
+            <livewire:components.stats.peta-sekolah />
+            <livewire:components.stats.peta-sekolah />
+        </div>
     </div>
     <div class="card w-full bg-base-100 shadow-xl">
         <div class="card-body">
