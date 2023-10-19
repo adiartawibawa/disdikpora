@@ -60,7 +60,10 @@
                 </a>
             </li>
             <li>
-                <a href="#"><x-icon-o-user-group class="w-5 h-5 stroke-current" /><span>Users</span></a>
+                <a href="{{ route('user.all') }}">
+                    <x-icon-o-user-group class="w-5 h-5 stroke-current" />
+                    <span>Users</span>
+                </a>
             </li>
             <li>
                 <a href="#"><x-icon-o-key class="w-5 h-5 stroke-current" /><span>Roles & Permissions</span></a>

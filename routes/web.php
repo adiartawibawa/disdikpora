@@ -2,6 +2,7 @@
 
 use App\Livewire\Pages\Gtks\Gtk;
 use App\Livewire\Pages\Sekolahs\Sekolah;
+use App\Livewire\Pages\Users\AllUser;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,9 @@ Route::middleware(['auth'])->group(function () {
 
         // Gtks Pages
         Route::get('/gtks', Gtk::class)->name('gtk.all');
+
+        // Users Pages
+        Route::get('/users', AllUser::class)->name('user.all');
     });
 });
 
