@@ -18,20 +18,27 @@ class Sekolah extends Component
         return ModelsSekolah::all();
     }
 
-    public function countSekolah()
+    public function countAllSekolah()
     {
         return $this->sekolah->count();
     }
 
-    public function getJenjang()
+    public function countEachJenjang()
     {
-        return $this->sekolah->select('jenjang')->count();
+        $jenjang = $this->sekolah->pluck('jenjang');
+        $countBy = $jenjang->countBy();
+        $result = $countBy->map(function ($count, $key) {
+            return [$key => $count];
+        })->values();
+
+        return $result;
     }
 
     public function render()
     {
         return view('livewire.components.stats.sekolah', [
-            'sekolah' => $this->getJenjang()
+            'sekolah' => $this->countAllSekolah(),
+            'jenjang' => $this->countEachJenjang(),
         ]);
     }
 }
