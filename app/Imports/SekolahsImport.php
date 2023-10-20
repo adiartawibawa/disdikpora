@@ -5,6 +5,7 @@ namespace App\Imports;
 use App\Models\Sekolah;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Laravolt\Indonesia\Models\Village;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -37,13 +38,20 @@ class SekolahsImport implements ToModel, WithHeadingRow, WithChunkReading
     private function getVillageCode($kecamatan, $desa)
     {
 
-        $village = \Indonesia::search($kecamatan)->allVillages();
+        // $village = \Indonesia::search($kecamatan)->allVillages();
+        $village = Village::whereHas('district', function ($query) use ($kecamatan) {
+            $query->where('name', $kecamatan);
+        })
+            ->where('name', $desa)
+            ->first();
 
-        foreach ($village as $item) {
-            if ($item->name == strtoupper($desa)) {
-                return $item->code;
-            }
-        }
+        // foreach ($village as $item) {
+        //     if ($item->name == strtoupper($desa)) {
+        //         return $item->code;
+        //     }
+        // }
+
+        return $village->code;
     }
 
     public function chunkSize(): int

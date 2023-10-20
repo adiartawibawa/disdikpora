@@ -48,27 +48,6 @@ class GrafikSekolah extends Component
         dd($block);
     }
 
-    // public function getSekolahProperty()
-    // {
-    //     return $this->sekolahQuery;
-    // }
-
-    // public function getSekolahQueryProperty()
-    // {
-    //     return Sekolah::all();
-    // }
-
-    // public function countEachJenjang()
-    // {
-    //     $jenjang = $this->sekolah->pluck('jenjang');
-    //     $countBy = $jenjang->countBy();
-    //     $result = $countBy->map(function ($count, $key) {
-    //         return [$key => $count];
-    //     })->values();
-
-    //     return $result;
-    // }
-
     public function render()
     {
         $sekolah = Sekolah::whereIn('jenjang', $this->types)->get();
@@ -79,7 +58,7 @@ class GrafikSekolah extends Component
                     $type = $data->first()->jenjang;
                     $value = $data->count();
 
-                    return $pieChartModel->addSlice($type, $value, $this->colors[$type]);
+                    return $pieChartModel->addSlice(\Str::upper($type), $value, $this->colors[$type]);
                 },
                 LivewireCharts::pieChartModel()
                     //->setTitle('Expenses by Type')

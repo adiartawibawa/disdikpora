@@ -22,7 +22,7 @@
         </div>
         <div class="flex flex-col items-center gap-4">
             <livewire:components.stats.peta-sekolah />
-            <livewire:components.stats.peta-sekolah />
+            {{-- <livewire:components.stats.peta-sekolah /> --}}
         </div>
     </div>
     <div class="card w-full bg-base-100 shadow-xl">
