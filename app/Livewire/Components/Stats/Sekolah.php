@@ -8,37 +8,31 @@ use Livewire\Component;
 class Sekolah extends Component
 {
 
-    public function getSekolahProperty()
+    public $status = ['negeri', 'swasta'];
+
+    private function allSekolah()
     {
-        return $this->sekolahQuery;
+        return ModelsSekolah::whereIn('status', $this->status)->get();
     }
 
-    public function getSekolahQueryProperty()
+    private function countByStatus()
     {
-        return ModelsSekolah::all();
-    }
+        $queryStatus = $this->allSekolah();
 
-    public function countAllSekolah()
-    {
-        return $this->sekolah->count();
-    }
-
-    public function countEachJenjang()
-    {
-        $jenjang = $this->sekolah->pluck('jenjang');
-        $countBy = $jenjang->countBy();
-        $result = $countBy->map(function ($count, $key) {
-            return [$key => $count];
-        })->values();
-
-        return $result;
+        $statusCount = $queryStatus->groupBy('status')->map(function ($status) {
+            return $status->count();
+        });
+        // dd($statusCount);
+        return $statusCount;
     }
 
     public function render()
     {
+
+
         return view('livewire.components.stats.sekolah', [
-            'sekolah' => $this->countAllSekolah(),
-            'jenjang' => $this->countEachJenjang(),
+            'sekolah' => $this->allSekolah(),
+            'countStatus' => $this->countByStatus()
         ]);
     }
 }
