@@ -71,7 +71,13 @@ class Sekolah extends Component
         $this->checked = [];
         $this->selectAll = false;
         $this->selectPage = false;
-        session()->flash('info', 'Selected Records were deleted Successfully');
+
+        // session()->flash('info', 'Selected Records were deleted Successfully');
+
+        $this->dispatch('notify', [
+            'status' => 'success',
+            'message' => 'Selected Records were deleted Successfully'
+        ]);
     }
 
     // public function exportSelected()
@@ -85,6 +91,7 @@ class Sekolah extends Component
         $sekolah->delete();
         $this->checked = array_diff($this->checked, [$id]);
         session()->flash('info', 'Record deleted Successfully');
+        $this->notify('Selected Records were deleted Successfully');
     }
 
     public function isChecked($id)

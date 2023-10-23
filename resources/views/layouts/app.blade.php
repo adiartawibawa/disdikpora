@@ -53,6 +53,9 @@
                             <div class="flex flex-col gap-6 pt-10 w-full">
                                 <!-- Page Content -->
                                 <main class="max-w-full flex-grow">
+
+                                    <x-notifications />
+
                                     {{ $slot }}
                                 </main>
                             </div>

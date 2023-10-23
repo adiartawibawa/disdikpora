@@ -212,7 +212,7 @@
                 </table>
             </div>
             <div class="card-actions justify-end">
-                {!! $sekolahs->onEachSide(5)->links() !!}
+                {!! $sekolahs->onEachSide(1)->links() !!}
             </div>
         </div>
     </div>
