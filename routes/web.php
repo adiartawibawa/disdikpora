@@ -3,6 +3,7 @@
 use App\Livewire\Pages\Gtks\Gtk;
 use App\Livewire\Pages\Sekolahs\Sekolah;
 use App\Livewire\Pages\Users\AllUser;
+use App\Livewire\Pages\Users\Create;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
 
         // Users Pages
         Route::get('/users', AllUser::class)->name('user.all');
+        Route::get('/users/create', Create::class)->name('user.create');
     });
 });
 

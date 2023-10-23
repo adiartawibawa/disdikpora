@@ -18,9 +18,9 @@
                 <h2>Data Sekolah</h2>
 
                 <div class="inline-flex items-center gap-1">
-                    <button class="btn btn-primary btn-sm">
+                    <a href="{{ route('user.create') }}" class="btn btn-primary btn-sm">
                         <x-icon-o-plus-circle class="w-5 h-5" />
-                    </button>
+                    </a>
                     <div class="dropdown dropdown-end">
                         <label tabindex="0" class="btn btn-ghost btn-sm">
                             <x-icon-o-ellipsis-vertical class="w-4 h-4" />
