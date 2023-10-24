@@ -14,10 +14,10 @@ class UserForm extends Form
     #[Rule('required|string|max:255')]
     public $name = '';
 
-    #[Rule('string|max:10|unique:users,username')]
+    #[Rule('string|max:10|unique:' . User::class . ',username')]
     public $username = '';
 
-    #[Rule('required|string|email|max:255|unique:users,email')]
+    #[Rule('required|string|email|max:255|unique:' . User::class . ',email')]
     public $email = '';
 
     #[Rule('required|string|max:255|confirmed')]
@@ -25,7 +25,7 @@ class UserForm extends Form
 
     public string $password_confirmation = '';
 
-    public $roles;
+    public string $roles = '';
 
     public function setUser(User $user)
     {
@@ -34,12 +34,20 @@ class UserForm extends Form
         $this->name = $user->name;
         $this->username = $user->username;
         $this->email = $user->email;
+
+        $this->roles = $user->getRoleNames()->implode(', ');
     }
 
     public function store()
     {
         $item = User::create($this->all());
+
         $item->assignRole($this->only(['roles']));
+
+        $item->update([
+            'current_role_id' => $this->getRoleId($this->only(['roles']))
+        ]);
+
         $this->reset();
     }
 
@@ -51,5 +59,12 @@ class UserForm extends Form
     public function allRoles()
     {
         return Role::pluck('name');
+    }
+
+    public function getRoleId($name)
+    {
+        $role = Role::whereName($name)->first();
+
+        return $role->id;
     }
 }

@@ -91,6 +91,10 @@ class AllUser extends Component
     public function deleteSingleRecord($id)
     {
         $user = User::findOrFail($id);
+        $roles = $user->getRoleNames();
+        foreach ($roles as $role) {
+            $user->removeRole($role);
+        }
         $user->delete();
         $this->checked = array_diff($this->checked, [$id]);
 

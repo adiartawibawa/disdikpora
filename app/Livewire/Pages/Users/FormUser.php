@@ -10,9 +10,13 @@ class FormUser extends Component
 {
     public UserForm $form;
 
+    public $user;
+
     public function mount(User $user): void
     {
         $this->form->setUser($user);
+
+        $this->user = $user;
     }
 
     public function save()
