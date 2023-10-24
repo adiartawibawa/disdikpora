@@ -6,9 +6,14 @@ use App\Livewire\Forms\Users\UserForm;
 use App\Models\User;
 use Livewire\Component;
 
-class Create extends Component
+class FormUser extends Component
 {
     public UserForm $form;
+
+    public function mount(User $user): void
+    {
+        $this->form->setUser($user);
+    }
 
     public function save()
     {
@@ -26,7 +31,7 @@ class Create extends Component
 
     public function render()
     {
-        return view('livewire.pages.users.create', [
+        return view('livewire.pages.users.form-user', [
             'roles' => $this->form->allRoles(),
         ])->layout('layouts.app');
     }

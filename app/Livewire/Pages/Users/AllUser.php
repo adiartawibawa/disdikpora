@@ -76,7 +76,11 @@ class AllUser extends Component
         $this->checked = [];
         $this->selectAll = false;
         $this->selectPage = false;
-        session()->flash('info', 'Selected Records were deleted Successfully');
+
+        $this->dispatch('notify', [
+            'status' => 'success',
+            'message' => 'Selected Records were deleted Successfully'
+        ]);
     }
 
     // public function exportSelected()
@@ -89,7 +93,12 @@ class AllUser extends Component
         $user = User::findOrFail($id);
         $user->delete();
         $this->checked = array_diff($this->checked, [$id]);
-        session()->flash('info', 'Record deleted Successfully');
+
+
+        $this->dispatch('notify', [
+            'status' => 'success',
+            'message' => 'Record deleted Successfully'
+        ]);
     }
 
     public function isChecked($id)

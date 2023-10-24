@@ -184,10 +184,12 @@
                                     @endforeach
                                 </td>
                                 <th>
-                                    <button class="btn btn-sm btn-ghost text-xs">
+                                    <a href="{{ route('user.edit', $item) }}" class="btn btn-sm btn-ghost text-xs">
                                         <x-icon-o-pencil-square class="h-4 w-4" />
-                                    </button>
-                                    <button class="btn btn-sm btn-ghost text-error text-xs">
+                                    </a>
+                                    <button class="btn btn-sm btn-ghost text-error text-xs"
+                                        onclick="confirm('Are you sure you want to delete these Records?') || event.stopImmediatePropagation()"
+                                        wire:click="deleteSingleRecord('{{ $item->id }}')">
                                         <x-icon-o-trash class="h-4 w-4" />
                                     </button>
                                 </th>
