@@ -12,6 +12,8 @@
         <li class="text-primary">Dashboard</li>
     </x-slot>
 
+
+
     <div class="grid md:grid-cols-2 col-span-2 gap-4 mb-8 w-full">
         <livewire:components.stats.sekolah />
         <livewire:components.stats.peta-sekolah />
@@ -34,5 +36,10 @@
         {{-- End Component Tendik  --}}
     </div>
 
+    <div class="w-full h-64 overflow-hidden">
+        <div class="card w-full bg-base-100 shadow-xl h-full">
+            <livewire:components.maps.base-map />
+        </div>
+    </div>
 
 </x-app-layout>
