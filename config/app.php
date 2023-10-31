@@ -191,6 +191,4 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 
-    'mapbox_token' => env('MAPBOX_PUBLIC_TOKEN', ''),
-
 ];
