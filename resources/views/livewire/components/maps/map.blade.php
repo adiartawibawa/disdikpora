@@ -1,5 +1,5 @@
 <div wire:ignore>
-    <div id="map" class="h-[67vh] z-0 rounded-md"></div>
+    <div id="map" class="h-[100vh] w-full z-0 rounded-md"></div>
 </div>
 
 <script>

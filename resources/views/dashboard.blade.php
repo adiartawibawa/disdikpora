@@ -15,8 +15,9 @@
     <div class="flex-none">
         <div class="flex flex-col md:flex-row w-full gap-4">
             <div class="md:w-1/2 w-full">
-                <div class="card w-full bg-base-100 shadow-xl">
+                <div class="card w-full h-auto bg-base-100 shadow-xl">
                     <livewire:components.maps.map />
+                    <livewire:components.maps.school-marker />
                 </div>
             </div>
             <div class="md:w-1/2 w-full h-full">
