@@ -1,6 +1,3 @@
-@prepend('styles')
-@endprepend
-
 @section('title', 'Dashboard')
 
 <x-slot name="header">
@@ -188,17 +185,32 @@
                                 </td>
                                 <td>{{ $item->alamat }}</td>
                                 <th>
-                                    <button class="btn btn-sm btn-ghost text-xs">
-                                        <x-icon-o-pencil-square class="h-4 w-4" />
-                                    </button>
-                                    <button
-                                        wire:click="$dispatch('openModal',{ component:'pages.sekolahs.location', arguments:{sekolah: '{{ $item->id }}'}})"
-                                        class="btn btn-sm btn-ghost text-xs">
-                                        <x-icon-o-map-pin class="h-4 w-4" />
-                                    </button>
-                                    <button class="btn btn-sm btn-ghost text-error text-xs">
-                                        <x-icon-o-trash class="h-4 w-4" />
-                                    </button>
+                                    <div class="dropdown dropdown-left">
+                                        <label tabindex="0" class="btn btn-ghost btn-sm">
+                                            <x-icon-o-ellipsis-vertical class="w-4 h-4" />
+                                        </label>
+                                        <ul tabindex="0"
+                                            class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-auto">
+                                            <li>
+                                                <a href="{{ route('sekolah.profile', $item->id) }}"
+                                                    class="btn btn-sm btn-ghost text-xs">
+                                                    <x-icon-o-eye class="h-4 w-4" />
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <button class="btn btn-sm btn-ghost text-xs">
+                                                    <x-icon-o-pencil-square class="h-4 w-4" />
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button
+                                                    class="btn btn-sm btn-ghost text-error text-xs hover:bg-error hover:text-white">
+                                                    <x-icon-o-trash class="h-4 w-4" />
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+
                                 </th>
                             </tr>
                         @empty

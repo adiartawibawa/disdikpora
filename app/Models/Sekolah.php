@@ -40,6 +40,11 @@ class Sekolah extends Model
         return $this->hasMany(Village::class, 'code', 'village_code');
     }
 
+    public function gtk()
+    {
+        return $this->hasMany(Gtk::class, 'id', 'sekolah_id');
+    }
+
     public function scopeSearch($query, $term)
     {
         $term = "%$term%";

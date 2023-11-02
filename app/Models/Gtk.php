@@ -36,6 +36,11 @@ class Gtk extends Model
         return $this->hasMany(GtkInfo::class);
     }
 
+    public function sekolah()
+    {
+        return $this->belongsTo(Sekolah::class);
+    }
+
     public function scopeSearch($query, $term)
     {
         $term = "%$term%";
