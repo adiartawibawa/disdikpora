@@ -7,6 +7,16 @@ use Livewire\Component;
 
 class SchoolMarker extends Component
 {
+    public $negeriIcon;
+    public $swastaIcon;
+    public $shadowIcon;
+
+    public function mount()
+    {
+        $this->negeriIcon = asset('/img/icon/school-negeri.png');
+        $this->swastaIcon = asset('/img/icon/school-swasta.png');
+        $this->shadowIcon = asset('/img/icon/school-shadow.png');
+    }
 
     public function render()
     {
