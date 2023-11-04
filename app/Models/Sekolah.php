@@ -42,7 +42,7 @@ class Sekolah extends Model
 
     public function gtk()
     {
-        return $this->hasMany(Gtk::class, 'id', 'sekolah_id');
+        return $this->hasMany(Gtk::class, 'sekolah_id', 'id');
     }
 
     public function scopeSearch($query, $term)

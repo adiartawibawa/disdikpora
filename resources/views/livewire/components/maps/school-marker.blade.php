@@ -17,8 +17,6 @@
         }
     });
 
-    console.log(@json($negeriIcon));
-
     var sekolahNegeriIcon = new sekolahIcon({
             iconUrl: @js($negeriIcon)
         }),
@@ -33,7 +31,13 @@
             popupContent += `<div class="mb-4 text-xl font-semibold">${feature.properties.name}</div>`;
         }
 
-        popupContent += `<div class="btn btn-xs btn-primary">detail</div>`
+        popupContent += `<div class="">NPSN : ${feature.properties.npsn}</div>` +
+            `<div class="">Status : ${feature.properties.status}</div>` +
+            `<div class="">Alamat : ${feature.properties.alamat}</div>` +
+            `<div class="">Kode Pos : ${feature.properties.kode_pos}</div>` +
+            `<div class="">Desa : ${feature.properties.desa}</div>` +
+            `<div class="">Kecamatan : ${feature.properties.kecamatan}</div>` +
+            `<a href="${feature.properties.url}" target="_blank" class="btn btn-xs btn-ghost mt-4">detail</a>`;
 
         layer.bindPopup(popupContent);
     }
@@ -41,7 +45,7 @@
     const geojson = L.geoJSON(sekolah, {
         onEachFeature: onEachFeature,
         pointToLayer: function(feature, latlng) {
-            if (feature.properties.status === 'negeri') {
+            if (feature.properties.status === 'Negeri') {
                 return L.marker(latlng, {
                     icon: sekolahNegeriIcon
                 });

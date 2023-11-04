@@ -4,6 +4,7 @@ namespace App\Livewire\Components\Maps;
 
 use App\Models\Sekolah;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class SchoolMarker extends Component
 {
@@ -27,7 +28,7 @@ class SchoolMarker extends Component
 
     public function getAllSchool()
     {
-        $sekolah = Sekolah::with(['village'])->get();
+        $sekolah = Sekolah::with(['village.district'])->get();
 
         return $sekolah;
     }
@@ -46,7 +47,13 @@ class SchoolMarker extends Component
                 'properties' => [
                     'id' => $item->id,
                     'name' => $item->nama,
-                    'status' => $item->status,
+                    'npsn' => $item->npsn,
+                    'status' => ucwords($item->status),
+                    'alamat' => $item->alamat,
+                    'kode_pos' => $item->village->first()->meta['pos'],
+                    'desa' => ucwords(Str::lower($item->village->first()->name)),
+                    'kecamatan' => ucwords(Str::lower($item->village->first()->district->name)),
+                    'url' => route('sekolah.profile', $item->id),
                     // Tambahkan atribut lain sesuai kebutuhan
                 ],
             ];
