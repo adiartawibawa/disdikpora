@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire\Pages\Panduan;
+namespace App\Livewire\Pages\Layanan;
 
-use App\Models\Panduan;
+use App\Models\Panduan as ModelsPanduan;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class PanduanLayanan extends Component
+class Panduan extends Component
 {
     use WithFileUploads;
 
@@ -52,7 +52,7 @@ class PanduanLayanan extends Component
 
     public function countLastStep($selectedCategory)
     {
-        $step = Panduan::where('jenis', $selectedCategory)->latest()->first();
+        $step = ModelsPanduan::where('jenis', $selectedCategory)->latest()->first();
 
         $this->step = ($step != null) ? ++$step->step : 1;
     }
@@ -104,7 +104,7 @@ class PanduanLayanan extends Component
 
     public function update($id, $params)
     {
-        $panduan = Panduan::findOrFail($id);
+        $panduan = ModelsPanduan::findOrFail($id);
         $panduan->jenis = $this->selectedCategory;
         $panduan->title = $params['title'];
         $panduan->content = $params['content'];
@@ -124,13 +124,13 @@ class PanduanLayanan extends Component
 
     public function getPanduan($jenis)
     {
-        $this->panduans = Panduan::where('jenis', $jenis)->get();
+        $this->panduans = ModelsPanduan::where('jenis', $jenis)->get();
 
         return $this->panduans;
     }
 
     public function render()
     {
-        return view('livewire.pages.panduan.panduan-layanan')->layout('layouts.app');
+        return view('livewire.pages.layanan.panduan')->layout('layouts.app');
     }
 }

@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('panduan') }}" wire:navigate>
+                <a href="{{ route('layanan') }}" wire:navigate>
                     <span>
                         <x-icon-o-ticket class="w-5 h-5 stroke-current" />
                     </span>
