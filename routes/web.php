@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Pages\Gtks\Gtk;
+use App\Livewire\Pages\Panduan\PanduanLayanan;
 use App\Livewire\Pages\Sekolahs\ProfileSekolah;
 use App\Livewire\Pages\Sekolahs\Sekolah;
 use App\Livewire\Pages\Users\AllUser;
@@ -27,6 +28,9 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['verified'])->group(function () {
         // Dashboard Pages
         Route::view('dashboard', 'dashboard')->name('dashboard');
+
+        // panduan Pages
+        Route::get('panduan', PanduanLayanan::class)->name('panduan');
 
         // Sekolah Pages
         Route::get('/sekolahs', Sekolah::class)->name('sekolah.all');

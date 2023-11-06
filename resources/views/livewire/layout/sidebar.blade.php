@@ -26,6 +26,22 @@
                     <span>Dashboard</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('panduan') }}" wire:navigate>
+                    <span>
+                        <x-icon-o-ticket class="w-5 h-5 stroke-current" />
+                    </span>
+                    <span>Layanan</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('panduan') }}" wire:navigate>
+                    <span>
+                        <x-icon-o-book-open class="w-5 h-5 stroke-current" />
+                    </span>
+                    <span>Panduan</span>
+                </a>
+            </li>
         </ul>
 
         <ul class="menu menu-sm lg:menu-md px-4 py-0 gap-2">
