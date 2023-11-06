@@ -13,38 +13,8 @@
 
 <div>
     <div class="flex flex-col md:flex-row gap-6 items-start justify-start">
-        <div class="card bg-base-100 shadow-xl md:w-2/6 w-full">
-            <form action="">
-                <div class="card-body space-y-6">
-                    <div class="card-title">
-                        <h2 class="">Tambah Layanan</h2>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="form-control">
-                            <label class="label">
-                                <span class="label-text">Jenis Layanan</span>
-                            </label>
-                            <input type="text" placeholder="" class="input input-bordered" />
-                        </div>
-                        <div class="form-control">
-                            <label class="label">
-                                <span class="label-text">Estimasi Layanan (hari)</span>
-                            </label>
-                            <input type="number" placeholder="0" class="input input-bordered" />
-                        </div>
-                        <div class="form-control">
-                            <label class="label">
-                                <span class="label-text">Deskripsi Layanan</span>
-                            </label>
-                            <textarea class="textarea textarea-bordered" placeholder=""></textarea>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary w-full">Tambahkan</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+
+        <livewire:pages.layanan.form-layanan />
 
         <div class="card bg-base-100 shadow-xl md:w-4/6 w-full">
             <div class="card-body">
@@ -78,7 +48,7 @@
                             <div class="mb-4">
                                 @if ($selectAll)
                                     <div>
-                                        You have selected all <strong>{{ $sekolahs->total() }}</strong> items.
+                                        You have selected all <strong>{{ $layanans->total() }}</strong> items.
                                         <a href="#" class="underline text-indigo-800 ml-2"
                                             wire:click.prevent="unselectsAll">Batalkan Semua</a>
                                     </div>
@@ -87,7 +57,7 @@
                                         You have selected <strong>{{ count($checked) }}</strong> items, Do you want to
                                         Select
                                         All
-                                        <strong>{{ $sekolahs->total() }}</strong>?
+                                        <strong>{{ $layanans->total() }}</strong>?
                                         <a href="#" class="underline text-indigo-800 ml-2"
                                             wire:click.prevent="selectsAll">Pilih Semua</a>
                                     </div>
@@ -164,30 +134,15 @@
                                         </div>
                                     </td>
                                     <th>
-                                        <div class="dropdown dropdown-left">
-                                            <label tabindex="0" class="btn btn-ghost btn-sm">
-                                                <x-icon-o-ellipsis-vertical class="w-4 h-4" />
-                                            </label>
-                                            <ul tabindex="0"
-                                                class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-auto">
-                                                <li>
-                                                    <a href="" class="btn btn-sm btn-ghost text-xs">
-                                                        <x-icon-o-eye class="h-4 w-4" />
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <button class="btn btn-sm btn-ghost text-xs">
-                                                        <x-icon-o-pencil-square class="h-4 w-4" />
-                                                    </button>
-                                                </li>
-                                                <li>
-                                                    <button
-                                                        class="btn btn-sm btn-ghost text-error text-xs hover:bg-error hover:text-white">
-                                                        <x-icon-o-trash class="h-4 w-4" />
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        <button
+                                            wire:click="$dispatchTo('form-layanan','update-layanan', {layanan: {{ $item }}})"
+                                            class="btn btn-sm btn-ghost text-xs">
+                                            <x-icon-o-pencil-square class="h-4 w-4" />
+                                        </button>
+                                        <button
+                                            class="btn btn-sm btn-ghost text-error text-xs hover:bg-error hover:text-white">
+                                            <x-icon-o-trash class="h-4 w-4" />
+                                        </button>
                                     </th>
                                 </tr>
                             @empty

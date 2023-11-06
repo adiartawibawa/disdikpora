@@ -93,6 +93,11 @@ class LayananTersedia extends Component
         return $this->sortDirection === 'asc' ? 'desc' : 'asc';
     }
 
+    public function editLayanan($layanan)
+    {
+        $this->dispatch('editLayanan', $layanan)->to(Form::class);
+    }
+
     public function render()
     {
         return view('livewire.pages.layanan.layanan-tersedia', [
