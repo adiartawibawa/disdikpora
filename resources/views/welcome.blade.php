@@ -33,7 +33,9 @@
         <input id="my-drawer" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content">
             <div class="relative">
-                <div id="map" class="w-full md:w-[40%] h-[100vh] z-0 md:left-[60%]"></div>
+                <div>
+                    <livewire:welcome.school-map />
+                </div>
                 <div
                     class="flex flex-col items-center justify-between py-3 px-2 rounded-t-3xl h-24 md:h-[100vh] w-full md:w-[60%] bg-white bottom-0 left-0 md:top-0 md:left-0 md:rounded-none absolute">
                     <div class="navbar bg-base-100 mb-6 md:mb-0">
@@ -269,19 +271,6 @@
         </div>
     </div>
 
-
-
-    <script>
-        var map = L.map('map').setView([-8.6042279, 115.1761774], 15);
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
-
-        var marker = L.marker([-8.6042279, 115.1761774]).addTo(map);
-
-        marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-    </script>
 </body>
 
 </html>
