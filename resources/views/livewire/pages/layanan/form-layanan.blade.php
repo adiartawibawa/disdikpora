@@ -1,12 +1,12 @@
 <div class="card bg-base-100 shadow-xl md:w-2/6 w-full">
-    @if (isset($layanan->id))
+    @if ($is_update)
         <form wire:submit="update">
         @else
             <form wire:submit="save">
     @endif
     <div class="card-body space-y-6">
         <div class="card-title">
-            <h2 class="">{{ isset($layanan->id) ? 'Edit' : 'Tambah' }} Layanan</h2>
+            <h2 class="">{{ $is_update ? 'Edit' : 'Tambah' }} Layanan</h2>
         </div>
         <div class="space-y-4">
             <div class="form-control">
@@ -44,8 +44,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <button type="submit"
-                class="btn btn-primary w-full">{{ isset($layanan->id) ? 'Sunting' : 'Simpan' }}</button>
+            <button type="submit" class="btn btn-primary w-full">{{ $is_update ? 'Sunting' : 'Simpan' }}</button>
         </div>
     </div>
     </form>

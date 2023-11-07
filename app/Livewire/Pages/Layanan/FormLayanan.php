@@ -11,13 +11,12 @@ class FormLayanan extends Component
 {
     public LayananForm $form;
 
-    // public function mount(Layanan $layanan)
-    // {
-    //     $this->form->setLayanan($layanan);
-    // }
+    public $is_update = false;
 
-    public function updateLayanan($layanan)
+    #[On('edit-layanan')]
+    public function updateLayanan(Layanan $layanan)
     {
+        $this->is_update = true;
         $this->form->setLayanan($layanan);
     }
 
@@ -31,7 +30,7 @@ class FormLayanan extends Component
     public function update()
     {
         $this->form->update();
-
+        $this->is_update = false;
         return $this->redirect('/layanan');
     }
 

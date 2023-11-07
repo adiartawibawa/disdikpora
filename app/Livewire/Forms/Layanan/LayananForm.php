@@ -20,7 +20,9 @@ class LayananForm extends Form
     #[Rule('required|min:25')]
     public $desc = '';
 
-    public $is_active = '';
+    public $is_active = true;
+
+
 
     public function setLayanan(Layanan $layanan)
     {

@@ -95,7 +95,25 @@ class LayananTersedia extends Component
 
     public function editLayanan($layanan)
     {
-        $this->dispatch('editLayanan', $layanan)->to(Form::class);
+        $this->dispatch('edit-layanan', $layanan)->to(FormLayanan::class);
+    }
+
+    public function toggleIsActive($params)
+    {
+        $is_active = !$params['is_active'];
+
+        $layanan = Layanan::findOrFail($params['id']);
+
+        $layanan->update([
+            'is_active' => $is_active,
+        ]);
+
+        $this->dispatch('notify', [
+            'status' => 'success',
+            'message' => 'Layanan berhasil diperbarui!'
+        ]);
+
+        return $this->redirect('/layanan');
     }
 
     public function render()
