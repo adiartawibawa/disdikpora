@@ -2,14 +2,17 @@
 
 namespace App\Livewire\Pages\Layanan;
 
+use App\Models\Layanan;
 use App\Models\Panduan as ModelsPanduan;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
 
 class Panduan extends Component
 {
     use WithFileUploads;
 
+    public $layanan;
     public $categories;
     public $selectedCategory = null;
     public $headerCard;
@@ -21,29 +24,26 @@ class Panduan extends Component
 
     public function mount()
     {
-        $this->categories = collect([
-            ['name' => 'register', 'label' => 'Panduan Register'],
-            ['name' => 'ambil_berkas', 'label' => 'Panduan Pengambilan Berkas'],
-            ['name' => 'ajuan_mohon', 'label' => 'Panduan Pengajuan Permohonan']
-        ]);
+        $this->layanan = $this->allLayanan();
+    }
+
+    public function allLayanan()
+    {
+        $layanans = Layanan::all();
+
+        $layanan = $layanans->map(function ($layanan) {
+            return [
+                'name' => Str::slug($layanan->name),
+                'label' => $layanan->name,
+            ];
+        });
+
+        return $layanan;
     }
 
     public function updatedSelectedCategory()
     {
-        switch ($this->selectedCategory) {
-            case 'register':
-                $this->headerCard = 'Register';
-                break;
-            case 'ambil_berkas':
-                $this->headerCard = 'Pengambilan Berkas';
-                break;
-            case 'ajuan_mohon':
-                $this->headerCard = 'Pengajuan Permohonan';
-                break;
-            default:
-                $this->headerCard = '';
-                break;
-        }
+        $this->headerCard = ucwords(str_replace('-', ' ', $this->selectedCategory));
 
         $this->getPanduan($this->selectedCategory);
 

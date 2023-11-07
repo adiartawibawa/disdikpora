@@ -23,8 +23,9 @@
                         <div class="w-full">
                             <select wire:model.live="selectedCategory" class="select select-bordered w-full">
                                 <option value="" selected>Pilih Panduan Layanan</option>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category['name'] }}">{{ $category['label'] }}</option>
+                                @foreach ($layanan as $item)
+                                    <option value="{{ $item['name'] }}" wire:key="{{ $item['label'] }}">
+                                        {{ $item['label'] }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -119,7 +120,7 @@
                                         class="absolute flex items-center justify-center w-6 h-6 bg-indigo-100 rounded-full -left-3 ring-8 ring-white dark:ring-gray-900 dark:bg-indigo-900">
                                     </span>
                                     <div class="tracking-wide text-sm text-gray-500/90">
-                                        Anda belum membuat panduan mengenai {{ Str::ucfirst($headerCard) }}
+                                        Anda belum membuat panduan mengenai {{ $headerCard }}
                                     </div>
                                 </li>
                             @endforelse
