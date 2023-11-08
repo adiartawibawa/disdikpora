@@ -70,7 +70,7 @@ class Panduan extends Component
 
         if ($this->panduanId == "") {
 
-            $panduan = Panduan::create([
+            $panduan = ModelsPanduan::create([
                 'jenis' => $this->selectedCategory,
                 'title' => $params['title'],
                 'content' => $params['content'],
@@ -86,6 +86,11 @@ class Panduan extends Component
             $panduan->save();
 
             session()->flash('message', 'Panduan berhasil ditambahkan.');
+
+            $this->dispatch('notify', [
+                'status' => 'success',
+                'message' => 'Panduan ' . $this->headerCard . ' berhasil ditambahkan.'
+            ]);
         } else {
             $this->update($this->panduanId, $params);
         }
