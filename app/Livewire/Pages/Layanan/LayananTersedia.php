@@ -116,6 +116,11 @@ class LayananTersedia extends Component
         return $this->redirect('/layanan');
     }
 
+    public function addKetentuanLayanan($layanan)
+    {
+        return redirect()->route('layanan.ketentuan', $layanan);
+    }
+
     public function render()
     {
         return view('livewire.pages.layanan.layanan-tersedia', [

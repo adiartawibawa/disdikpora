@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Pages\Gtks\Gtk;
+use App\Livewire\Pages\Layanan\KetentuanLayanan;
 use App\Livewire\Pages\Layanan\LayananTersedia;
 use App\Livewire\Pages\Layanan\Panduan;
 use App\Livewire\Pages\Sekolahs\ProfileSekolah;
@@ -32,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
 
         // Layanan Pages
         Route::get('layanan', LayananTersedia::class)->name('layanan');
+        Route::get('layanan/{layanan}/ketentuan', KetentuanLayanan::class)->name('layanan.ketentuan');
 
         // Panduan Pages
         Route::get('panduan', Panduan::class)->name('panduan');

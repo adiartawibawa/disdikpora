@@ -149,7 +149,10 @@
                                                 <x-icon-o-eye class="h-4 w-4" />
                                             </button>
                                         @endif
-
+                                        <button wire:click="addKetentuanLayanan('{{ $item->id }}')" name="Detail"
+                                            class="btn btn-sm btn-ghost text-xs">
+                                            <x-icon-o-clipboard-document-check class="h-4 w-4" />
+                                        </button>
                                         <button
                                             class="btn btn-sm btn-ghost text-error text-xs hover:bg-error hover:text-white">
                                             <x-icon-o-trash class="h-4 w-4" />

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Layanan extends Model
 {
@@ -15,6 +16,11 @@ class Layanan extends Model
         'desc',
         'is_active'
     ];
+
+    public function ketentuans(): MorphMany
+    {
+        return $this->morphMany(Ketentuan::class, 'ketentuan', 'ketentuan_type', 'ketentuan_id');
+    }
 
     public function scopeSearch($query, $term)
     {
