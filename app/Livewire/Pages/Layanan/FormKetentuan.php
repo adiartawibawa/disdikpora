@@ -3,27 +3,67 @@
 namespace App\Livewire\Pages\Layanan;
 
 use App\Livewire\Forms\Layanan\KetentuanForm;
+use App\Models\Ketentuan;
 use App\Models\Layanan;
-use Livewire\Component;
 use LivewireUI\Modal\ModalComponent;
+use Livewire\Attributes\On;
 
 class FormKetentuan extends ModalComponent
 {
     public Layanan $layanan;
-    public $type;
+    public $category;
     public KetentuanForm $form;
     public $is_update = false;
 
-    public function mount($type)
+    // public function mount(Ketentuan $ketentuan, $category)
+    // {
+    //     $this->is_update = true;
+    //     $this->category = $category;
+    //     $this->form->setKetentuan($ketentuan);
+    // }
+
+    public function updatedCategory($category)
     {
-        $this->type = $type;
+        $this->category = $category;
+    }
+
+    #[On('edit-layanan')]
+    public function updateLayanan(Ketentuan $ketentuan)
+    {
+        $this->is_update = true;
+        $this->form->setKetentuan($ketentuan);
     }
 
     public function save()
     {
         $form = $this->form;
-        $form->type = $this->type;
+        $form->category = $this->category;
+        $form->ketentuan_id = $this->layanan->id;
+        $form->ketentuan_type = Layanan::class;
+
         $form->store();
+
+        $this->dispatch('notify', [
+            'status' => 'success',
+            'message' => ucwords($this->category . ' Ketentuan berhasil ditambahkan!')
+        ]);
+
+        $this->closeModal();
+
+        return redirect()->route('layanan.ketentuan', $this->layanan->id);
+    }
+
+    public function update()
+    {
+        $form = $this->form;
+        $form->category = $this->category;
+        $form->ketentuan_id = $this->layanan->id;
+        $form->ketentuan_type = Layanan::class;
+        $this->is_update = false;
+
+        $form->update();
+
+        return redirect()->route('layanan.ketentuan', $this->layanan->id);
     }
 
     public function render()

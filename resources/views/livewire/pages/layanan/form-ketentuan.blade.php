@@ -9,12 +9,12 @@
             <div class="card-title mb-4 flex flex-col items-start">
                 <h2>Formulir Layanan</h2>
                 <p class="mt-1 font-normal text-sm text-gray-600 dark:text-gray-400">
-                    {{ __('Silahkan tambahkan formulir layanan yang harus disiapkan') }}
+                    {{ __('Silahkan tambahkan kebutuhan layanan yang harus disiapkan') }}
                 </p>
             </div>
 
             <div class="mb-8 w-full">
-                {{ $type }}
+
                 <div class="form-control">
                     <label class="label">
                         <span class="label-text">Nama Formulir</span>
@@ -41,8 +41,8 @@
                     <label class="label">
                         <span class="label-text">Tipe Formulir</span>
                     </label>
-                    <select wire:model.blur="form.category" class="select select-bordered w-full">
-                        <option disabled selected>Tipe Formulir</option>
+                    <select wire:model.blur="form.type" class="select select-bordered w-full">
+                        <option selected>Tipe Formulir</option>
                         <option value="string">Jawaban singkat</option>
                         <option value="text">Paragraf</option>
                         <option value="image">Image/Foto</option>
@@ -66,7 +66,7 @@
                 </div>
             </div>
             <div class="card-actions flex justify-end">
-                <button class="btn btn-ghost btn-sm">Batal</button>
+                <button wire:click="$dispatch('closeModal')" class="btn btn-ghost btn-sm">Batal</button>
                 <button type="submit" class="btn btn-primary btn-sm">{{ $is_update ? 'Sunting' : 'Simpan' }}</button>
             </div>
             </form>

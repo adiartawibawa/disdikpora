@@ -10,7 +10,7 @@ class KetentuanForm extends Form
 {
     public ?Ketentuan $ketentuan;
 
-    #[Rule('required|min:5')]
+    #[Rule('required|min:3')]
     public $name = '';
     #[Rule('required|min:10')]
     public $desc = '';
@@ -18,6 +18,8 @@ class KetentuanForm extends Form
     #[Rule('required|min:5')]
     public $type = "";
     public $is_required = true;
+    public $ketentuan_id = '';
+    public $ketentuan_type = '';
 
     public function setKetentuan(Ketentuan $ketentuan)
     {
@@ -32,7 +34,6 @@ class KetentuanForm extends Form
 
     public function store()
     {
-        dd($this->all());
         Ketentuan::create($this->all());
 
         $this->reset();

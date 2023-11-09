@@ -134,26 +134,29 @@
                                         </div>
                                     </td>
                                     <th>
-                                        <button wire:click="editLayanan('{{ $item->id }}')"
+                                        <button title="Edit Layanan" wire:click="editLayanan('{{ $item->id }}')"
                                             class="btn btn-sm btn-ghost text-xs">
                                             <x-icon-o-pencil-square class="h-4 w-4" />
                                         </button>
                                         @if ($item->is_active)
-                                            <button wire:click="toggleIsActive({{ $item }})"
+                                            <button title="Aktifkan Layanan"
+                                                wire:click="toggleIsActive({{ $item }})"
                                                 class="btn btn-sm btn-ghost text-xs">
                                                 <x-icon-o-eye-slash class="h-4 w-4" />
                                             </button>
                                         @else
-                                            <button wire:click="toggleIsActive({{ $item }})"
+                                            <button title="Non-Aktifkan Layanan"
+                                                wire:click="toggleIsActive({{ $item }})"
                                                 class="btn btn-sm btn-ghost text-xs">
                                                 <x-icon-o-eye class="h-4 w-4" />
                                             </button>
                                         @endif
-                                        <button wire:click="addKetentuanLayanan('{{ $item->id }}')" name="Detail"
+                                        <button title="Formulir dan Prasyarat"
+                                            wire:click="addKetentuanLayanan('{{ $item->id }}')" name="Detail"
                                             class="btn btn-sm btn-ghost text-xs">
                                             <x-icon-o-clipboard-document-check class="h-4 w-4" />
                                         </button>
-                                        <button
+                                        <button title="Hapus Layanan"
                                             class="btn btn-sm btn-ghost text-error text-xs hover:bg-error hover:text-white">
                                             <x-icon-o-trash class="h-4 w-4" />
                                         </button>
