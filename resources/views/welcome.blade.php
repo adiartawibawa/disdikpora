@@ -37,7 +37,7 @@
                     <livewire:welcome.school-map />
                 </div>
                 <div
-                    class="flex flex-col items-center justify-between py-3 px-2 rounded-t-3xl h-24 md:h-[100vh] w-full md:w-[60%] bg-white bottom-0 left-0 md:top-0 md:left-0 md:rounded-none absolute">
+                    class="flex flex-col items-center justify-between py-3 px-2 rounded-t-3xl h-24 md:h-[100vh] w-full md:w-[60%] bg-white bottom-0 fixed left-0 md:top-0 md:left-0 md:rounded-none">
                     <div class="navbar bg-base-100 mb-6 md:mb-0">
                         <div class="flex-1">
                             <a class="btn btn-ghost normal-case text-xl">{{ config('app.name') }}</a>
