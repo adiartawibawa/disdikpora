@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="flex flex-col md:flex-row w-full gap-4">
-        <div class="card bg-base-100 shadow-xl w-full md:w-1/2">
+        <div class="card bg-base-100 shadow-xl w-full h-full md:w-1/2">
             <div class="card-body">
                 <div class="card-title flex items-center justify-between">
                     <h2>Formulir Layanan</h2>
@@ -94,7 +94,7 @@
                 </div>
             </div>
         </div>
-        <div class="card bg-base-100 shadow-xl w-full md:w-1/2">
+        <div class="card bg-base-100 shadow-xl w-full h-full md:w-1/2">
             <div class="card-body">
                 <div class="card-title flex items-center justify-between">
                     <h2>Prasyarat Layanan</h2>
