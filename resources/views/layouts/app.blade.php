@@ -30,6 +30,8 @@
         integrity="sha512-TiMWaqipFi2Vqt4ugRzsF8oRoGFlFFuqIi30FFxEPNw58Ov9mOy6LgC05ysfkxwLE0xVeZtmr92wVg9siAFRWA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    @livewireChartsScripts
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -92,7 +94,6 @@
 
     @livewire('wire-elements-modal')
 
-    @livewireChartsScripts
 
     @stack('scripts')
 </body>
