@@ -15,22 +15,9 @@ class FormKetentuan extends ModalComponent
     public KetentuanForm $form;
     public $is_update = false;
 
-    // public function mount(Ketentuan $ketentuan, $category)
-    // {
-    //     $this->is_update = true;
-    //     $this->category = $category;
-    //     $this->form->setKetentuan($ketentuan);
-    // }
-
-    public function updatedCategory($category)
+    public function mount(Ketentuan $ketentuan)
     {
-        $this->category = $category;
-    }
-
-    #[On('edit-layanan')]
-    public function updateLayanan(Ketentuan $ketentuan)
-    {
-        $this->is_update = true;
+        $this->category = $this->category;
         $this->form->setKetentuan($ketentuan);
     }
 
@@ -62,6 +49,13 @@ class FormKetentuan extends ModalComponent
         $this->is_update = false;
 
         $form->update();
+
+        $this->dispatch('notify', [
+            'status' => 'success',
+            'message' => ucwords($this->category . ' Ketentuan berhasil diperbarui!')
+        ]);
+
+        $this->closeModal();
 
         return redirect()->route('layanan.ketentuan', $this->layanan->id);
     }

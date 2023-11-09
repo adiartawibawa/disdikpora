@@ -67,7 +67,7 @@
                                                 </div>
                                                 <div class="inline-flex items-end justify-end  w-[20%]">
                                                     <button
-                                                        wire:click="$dispatch('openModal', { component: 'pages.layanan.form-ketentuan', arguments: {layanan: '{{ $layanan->id }}', ketentuan: {{ $ketentuan->id }}, category:'formulir' }})"
+                                                        wire:click="$dispatch('openModal', { component: 'pages.layanan.form-ketentuan', arguments: {layanan: '{{ $layanan->id }}', ketentuan: {{ $ketentuan->id }}, category:'formulir', is_update:true }})"
                                                         type="button" class="btn btn-xs btn-ghost">
                                                         <x-icon-o-pencil class="w-4 h-4" />
                                                     </button>
@@ -133,7 +133,7 @@
                                                 </div>
                                                 <div class="inline-flex items-end justify-end  w-[20%]">
                                                     <button
-                                                        wire:click="$dispatch('openModal', { component: 'pages.layanan.form-ketentuan', arguments: {layanan: '{{ $layanan->id }}', ketentuan: {{ $ketentuan->id }}, category:'prasyarat' }})"
+                                                        wire:click="$dispatch('openModal', { component: 'pages.layanan.form-ketentuan', arguments: {layanan: '{{ $layanan->id }}', ketentuan: {{ $ketentuan->id }}, category:'prasyarat', is_update:true }})"
                                                         type="button" class="btn btn-xs btn-ghost">
                                                         <x-icon-o-pencil class="w-4 h-4" />
                                                     </button>

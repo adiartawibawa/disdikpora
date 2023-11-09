@@ -7,9 +7,9 @@
                     <form wire:submit="save">
             @endif
             <div class="card-title mb-4 flex flex-col items-start">
-                <h2>Formulir Layanan</h2>
+                <h2>{{ Str::ucfirst($category) }} Layanan</h2>
                 <p class="mt-1 font-normal text-sm text-gray-600 dark:text-gray-400">
-                    {{ __('Silahkan tambahkan kebutuhan layanan yang harus disiapkan') }}
+                    {{ __('Silahkan tambahkan ' . $category . ' untuk kebutuhan layanan yang harus disiapkan') }}
                 </p>
             </div>
 
@@ -17,7 +17,7 @@
 
                 <div class="form-control">
                     <label class="label">
-                        <span class="label-text">Nama Formulir</span>
+                        <span class="label-text">Nama {{ Str::ucfirst($category) }}</span>
                     </label>
                     <input wire:model.blur="form.name" type="text" placeholder="" class="input input-bordered" />
                     @error('form.name')
@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-control">
                     <label class="label">
-                        <span class="label-text">Deskripsi Formulir</span>
+                        <span class="label-text">Deskripsi {{ Str::ucfirst($category) }}</span>
                     </label>
                     <input wire:model.blur="form.desc" type="text" placeholder="" class="input input-bordered" />
                     @error('form.desc')
@@ -39,10 +39,10 @@
                 </div>
                 <div class="form-control">
                     <label class="label">
-                        <span class="label-text">Tipe Formulir</span>
+                        <span class="label-text">Tipe {{ Str::ucfirst($category) }}</span>
                     </label>
                     <select wire:model.blur="form.type" class="select select-bordered w-full">
-                        <option selected>Tipe Formulir</option>
+                        <option selected>Tipe {{ Str::ucfirst($category) }}</option>
                         <option value="string">Jawaban singkat</option>
                         <option value="text">Paragraf</option>
                         <option value="image">Image/Foto</option>
@@ -57,7 +57,8 @@
                 </div>
                 <div class="form-control mt-4">
                     <label class="relative inline-flex items-center cursor-pointer">
-                        <input wire:model.blur="form.is_required" type="checkbox" value="" class="sr-only peer">
+                        <input wire:model.blur="form.is_required" type="checkbox" value="" class="sr-only peer"
+                            @checked($form->is_required)>
                         <div
                             class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
                         </div>
@@ -66,7 +67,7 @@
                 </div>
             </div>
             <div class="card-actions flex justify-end">
-                <button wire:click="$dispatch('closeModal')" class="btn btn-ghost btn-sm">Batal</button>
+                <button type="button" wire:click="$dispatch('closeModal')" class="btn btn-ghost btn-sm">Batal</button>
                 <button type="submit" class="btn btn-primary btn-sm">{{ $is_update ? 'Sunting' : 'Simpan' }}</button>
             </div>
             </form>

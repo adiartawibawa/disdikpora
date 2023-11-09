@@ -24,6 +24,18 @@ class KetentuanLayanan extends Component
         return redirect()->back();
     }
 
+    public function openEditModal($ketentuan, $category)
+    {
+        $this->dispatch('openModal', [
+            'component' => 'pages.layanan.form-ketentuan',
+            'arguments' => [
+                'layanan' => $this->layanan->id,
+                'ketentuan' => $ketentuan,
+                'category' => $category
+            ]
+        ]);
+    }
+
     public function render()
     {
         return view('livewire.pages.layanan.ketentuan-layanan')->layout('layouts.app');
