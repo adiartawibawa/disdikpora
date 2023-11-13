@@ -95,7 +95,7 @@
                                         class="absolute flex items-center justify-center w-6 h-6 bg-indigo-100 rounded-full -left-3 ring-8 ring-white dark:ring-gray-900 dark:bg-indigo-900">
                                         {{ $item->step }}
                                     </span>
-                                    <img src="{{ $item->image }}"
+                                    <img src="{{ $item->image_url }}"
                                         class="object-cover object-center h-36 w-full max-w-full rounded-lg shadow-md"
                                         alt="{{ $item->title }}">
                                     <h3

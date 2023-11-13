@@ -20,9 +20,12 @@
                             <span class="block text-sm text-gray-500">
                                 Estimasi layanan : {{ $item->estimasi }} Hari
                             </span>
+                            {{-- <span class="block text-sm text-gray-500">
+                                {{ Str::limit($item->desc, 50, '...') }}
+                            </span> --}}
                         </div>
                         <p wire:click="$dispatch('openModal',{component:'welcome.panduan-layanan', arguments:{layanan: '{{ $item->id }}'}} )"
-                            class="cursor-pointer mt-14 text-gray-300 dark:text-gray-600 underline">Detail</p>
+                            class="cursor-pointer mt-8 text-gray-300 dark:text-gray-600 underline">Detail</p>
                     </div>
                 </div>
             @empty

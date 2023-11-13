@@ -12,4 +12,16 @@ class Panduan extends Model implements HasMedia
     use InteractsWithMedia;
 
     protected $fillable = ['jenis', 'title', 'content', 'image', 'file', 'step'];
+
+    protected $appends = ['image_url', 'file_url'];
+
+    public function getImageUrlAttribute()
+    {
+        return url('/') . '/storage/' . $this->image;
+    }
+
+    public function getFileUrlAttribute()
+    {
+        return url('/') . '/storage/' . $this->file;
+    }
 }

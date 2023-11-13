@@ -24,6 +24,11 @@ class FormLayanan extends Component
     {
         $this->form->store();
 
+        $this->dispatch('notify', [
+            'status' => 'success',
+            'message' => ucwords('Layanan berhasil ditambahkan!')
+        ]);
+
         return $this->redirect('/layanan');
     }
 

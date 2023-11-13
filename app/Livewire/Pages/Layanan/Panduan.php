@@ -81,7 +81,7 @@ class Panduan extends Component
                 $panduan->file = $this->uploadFile($panduan, $params['document'], 'document');
             }
 
-            $panduan->image = $this->uploadFile($panduan, $params['image'], 'images');
+            $panduan->image = $this->uploadFile($panduan, $params['image'], 'image');
 
             $panduan->save();
 
@@ -104,7 +104,12 @@ class Panduan extends Component
         $panduan->clearMediaCollection($collection);
         $panduan->addMedia($media)->toMediaCollection($collection);
 
-        return $panduan->getFirstMedia($collection)->getUrl();
+        return $this->getGenerateFileUrl($panduan->getFirstMedia($collection));
+    }
+
+    public function getGenerateFileUrl($collection)
+    {
+        return  "/" . $collection->id . "/" . $collection->file_name;
     }
 
     public function update($id, $params)

@@ -6,7 +6,7 @@
         <div class="drawer flex flex-col md:flex-row h-screen">
             <input id="drawer" type="checkbox" class="drawer-toggle" />
             <div class="drawer-content overflow-y-auto flex flex-col justify-between h-screen no-scrollbar w-full md:w-[70%] "
-                x-data="{ activeTab: 2 }">
+                x-data="{ activeTab: 1 }">
                 <div class="md:sticky md:top-0 md:z-10 shadow-sm absolute z-40 bottom-0 w-full">
                     <nav class="navbar bg-base-100 w-full">
                         <div class="flex-1">
