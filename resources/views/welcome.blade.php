@@ -1,34 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.base')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>{{ config('app.name') }}</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css"
-        integrity="sha512-fYyZwU1wU0QWB4Yutd/Pvhy5J1oWAwFXun1pt+Bps04WSe4Aq6tyHlT4+MHSJhD8JlLfgLuC4CbCnX5KHSjyCg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"
-        integrity="sha512-TiMWaqipFi2Vqt4ugRzsF8oRoGFlFFuqIi30FFxEPNw58Ov9mOy6LgC05ysfkxwLE0xVeZtmr92wVg9siAFRWA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-
-<body class="antialiased h-screen bg-white">
+@section('content')
     <div class="relative">
 
         <div class="drawer flex flex-col md:flex-row h-screen">
@@ -41,8 +13,7 @@
                             <a class="btn btn-ghost normal-case text-xl">{{ config('app.name') }}</a>
                         </div>
                         <div class="flex-none md:hidden block">
-                            <label for="drawer" aria-label="close sidebar"
-                                class="btn btn-square btn-ghost drawer-button">
+                            <label for="drawer" aria-label="close sidebar" class="btn btn-square btn-ghost drawer-button">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     class="inline-block w-5 h-5 stroke-current">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -79,12 +50,12 @@
                                             wire:navigate>Log in</a>
                                     </li>
                                     {{-- @if (Route::has('register'))
-                                    <li>
-                                        <a href="{{ route('register') }}"
-                                            class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                            wire:navigate>Register</a>
-                                    </li>
-                                @endif --}}
+                                <li>
+                                    <a href="{{ route('register') }}"
+                                        class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                                        wire:navigate>Register</a>
+                                </li>
+                            @endif --}}
                                 @endauth
                             </ul>
                         </div>
@@ -134,113 +105,12 @@
                         x-transition:leave-start="opacity-100 translate-y-0"
                         x-transition:leave-end="opacity-0 translate-y-12">
                         <div class="py-20">
-                            <div class="mx-auto px-6 xl:container md:px-12">
-                                <div class="mb-16 md:w-2/3 lg:w-1/2">
-                                    <h2 class="mb-4 text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">Tailus
-                                        blocks leadership</h2>
-                                    <p class="text-gray-600 dark:text-gray-300">Tailus prides itself not only on
-                                        award-winning technology, but also on the talent of its people of some of the
-                                        brightest minds and most experienced executives in business.</p>
-                                </div>
-                                <div class="grid gap-6 px-4 sm:grid-cols-2 sm:px-0 md:grid-cols-3">
-                                    <div class="group relative space-y-6 overflow-hidden rounded-3xl">
-                                        <img class="ransition mx-auto h-[26rem] w-full object-cover object-top grayscale duration-500 group-hover:scale-105 group-hover:grayscale-0"
-                                            src="images/woman1.jpg" alt="woman" loading="lazy" width="640"
-                                            height="805" />
-                                        <div
-                                            class="absolute inset-x-0 bottom-0 mt-auto h-max translate-y-24 bg-gray-800 px-8 py-6 transition duration-300 ease-in-out group-hover:translate-y-0 dark:bg-white">
-                                            <div>
-                                                <h4 class="text-xl font-semibold text-white dark:text-gray-700">Hentoni
-                                                    Doe</h4>
-                                                <span class="block text-sm text-gray-500">CEO-Founder</span>
-                                            </div>
-                                            <p class="mt-8 text-gray-300 dark:text-gray-600">Quae labore quia tempora
-                                                dolor impedit. Possimus, sint ducimus ipsam?</p>
-                                        </div>
-                                    </div>
-                                    <div class="group relative space-y-6 overflow-hidden rounded-3xl">
-                                        <img class="ransition mx-auto h-[26rem] w-full object-cover object-top grayscale duration-500 group-hover:scale-105 group-hover:grayscale-0"
-                                            src="images/woman.jpg" alt="woman" loading="lazy" width="640"
-                                            height="805" />
-                                        <div
-                                            class="absolute inset-x-0 bottom-0 mt-auto h-max translate-y-24 bg-gray-800 px-8 py-6 transition duration-300 ease-in-out group-hover:translate-y-0 dark:bg-white">
-                                            <div>
-                                                <h4 class="text-xl font-semibold text-white dark:text-gray-700">Hentoni
-                                                    Doe</h4>
-                                                <span class="block text-sm text-gray-500">CEO-Founder</span>
-                                            </div>
-                                            <p class="mt-8 text-gray-300 dark:text-gray-600">Quae labore quia tempora
-                                                dolor impedit. Possimus, sint ducimus ipsam?</p>
-                                        </div>
-                                    </div>
-                                    <div class="group relative space-y-6 overflow-hidden rounded-3xl">
-                                        <img class="mx-auto h-[26rem] w-full object-cover object-top grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0"
-                                            src="images/man.jpg" alt="woman" loading="lazy" width="640"
-                                            height="805" />
-                                        <div
-                                            class="absolute inset-x-0 bottom-0 mt-auto h-max translate-y-24 bg-gray-800 px-8 py-6 transition duration-300 ease-in-out group-hover:translate-y-0 dark:bg-white">
-                                            <div>
-                                                <h4 class="text-xl font-semibold text-white dark:text-gray-700">Hentoni
-                                                    Doe</h4>
-                                                <span class="block text-sm text-gray-500">CEO-Founder</span>
-                                            </div>
-                                            <p class="mt-8 text-gray-300 dark:text-gray-600">Quae labore quia tempora
-                                                dolor impedit. Possimus, sint ducimus ipsam?</p>
-                                        </div>
-                                    </div>
-                                    <div class="group relative space-y-6 overflow-hidden rounded-3xl">
-                                        <img class="ransition mx-auto h-[26rem] w-full object-cover object-top grayscale duration-500 group-hover:scale-105 group-hover:grayscale-0"
-                                            src="images/woman1.jpg" alt="woman" loading="lazy" width="640"
-                                            height="805" />
-                                        <div
-                                            class="absolute inset-x-0 bottom-0 mt-auto h-max translate-y-24 bg-gray-800 px-8 py-6 transition duration-300 ease-in-out group-hover:translate-y-0 dark:bg-white">
-                                            <div>
-                                                <h4 class="text-xl font-semibold text-white dark:text-gray-700">Hentoni
-                                                    Doe</h4>
-                                                <span class="block text-sm text-gray-500">CEO-Founder</span>
-                                            </div>
-                                            <p class="mt-8 text-gray-300 dark:text-gray-600">Quae labore quia tempora
-                                                dolor impedit. Possimus, sint ducimus ipsam?</p>
-                                        </div>
-                                    </div>
-                                    <div class="group relative space-y-6 overflow-hidden rounded-3xl">
-                                        <img class="mx-auto h-[26rem] w-full object-cover object-top grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0"
-                                            src="images/man.jpg" alt="woman" loading="lazy" width="640"
-                                            height="805" />
-                                        <div
-                                            class="absolute inset-x-0 bottom-0 mt-auto h-max translate-y-24 bg-gray-800 px-8 py-6 transition duration-300 ease-in-out group-hover:translate-y-0 dark:bg-white">
-                                            <div>
-                                                <h4 class="text-xl font-semibold text-white dark:text-gray-700">Hentoni
-                                                    Doe</h4>
-                                                <span class="block text-sm text-gray-500">CEO-Founder</span>
-                                            </div>
-                                            <p class="mt-8 text-gray-300 dark:text-gray-600">Quae labore quia tempora
-                                                dolor impedit. Possimus, sint ducimus ipsam?</p>
-                                        </div>
-                                    </div>
-                                    <div class="group relative space-y-6 overflow-hidden rounded-3xl">
-                                        <img class="ransition mx-auto h-[26rem] w-full object-cover object-top grayscale duration-500 group-hover:scale-105 group-hover:grayscale-0"
-                                            src="images/woman1.jpg" alt="woman" loading="lazy" width="640"
-                                            height="805" />
-                                        <div
-                                            class="absolute inset-x-0 bottom-0 mt-auto h-max translate-y-24 bg-gray-800 px-8 py-6 transition duration-300 ease-in-out group-hover:translate-y-0 dark:bg-white">
-                                            <div>
-                                                <h4 class="text-xl font-semibold text-white dark:text-gray-700">Hentoni
-                                                    Doe</h4>
-                                                <span class="block text-sm text-gray-500">CEO-Founder</span>
-                                            </div>
-                                            <p class="mt-8 text-gray-300 dark:text-gray-600">Quae labore quia tempora
-                                                dolor impedit. Possimus, sint ducimus ipsam?</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <livewire:welcome.daftar-layanan />
                         </div>
                     </section>
                 </div>
                 <!-- Page content here -->
-                <footer
-                    class="footer footer-center pb-8 bg-base-100 text-xs text-neutral-400 max-w-[100vw] px-6 xl:px-6">
+                <footer class="footer footer-center pb-8 bg-base-100 text-xs text-neutral-400 max-w-[100vw] px-6 xl:px-6">
                     <aside class="flex flex-col md:flex-row w-full md:justify-between items-center">
                         <div>Copyright © {{ date('Y') }} - {{ config('app.name') }}</div>
                         <div>Made with ❤️ by Adi Arta Wibawa</div>
@@ -269,12 +139,12 @@
                                 wire:navigate>Log in</a>
                         </li>
                         {{-- @if (Route::has('register'))
-                                    <li>
-                                        <a href="{{ route('register') }}"
-                                            class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                            wire:navigate>Register</a>
-                                    </li>
-                                @endif --}}
+                                <li>
+                                    <a href="{{ route('register') }}"
+                                        class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                                        wire:navigate>Register</a>
+                                </li>
+                            @endif --}}
                     @endauth
                 </ul>
             </div>
@@ -286,6 +156,4 @@
             </aside>
         </div>
     </div>
-</body>
-
-</html>
+@endsection
