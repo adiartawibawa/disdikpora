@@ -65,7 +65,7 @@
                 <!-- Page content here -->
                 <div class="relative flex flex-col mb-auto">
                     {{-- section layanan --}}
-                    <section id="beranda" class="py-24 flex items-center h-full justify-center bg-white"
+                    <section id="beranda" class="flex flex-col items-center h-full justify-center"
                         x-show="activeTab === 1"
                         x-transition:enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 transform order-first"
                         x-transition:enter-start="opacity-0 -translate-y-8"
@@ -73,25 +73,8 @@
                         x-transition:leave="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-300 transform absolute"
                         x-transition:leave-start="opacity-100 translate-y-0"
                         x-transition:leave-end="opacity-0 translate-y-12">
-                        <div class="mx-auto max-w-[43rem]">
-                            <div class="text-center">
-                                <p class="text-lg font-medium leading-8 text-indigo-600/95">Lorem ipsum dolor sit amet
-                                    consectetur adipisicing elit.</p>
-                                <h1 class="mt-3 text-[3.5rem] font-bold leading-[4rem] tracking-tight text-black">
-                                    Distribute your brand from&nbsp;design to code</h1>
-                                <p class="mt-3 text-lg leading-relaxed text-slate-400">Specify helps you unify your
-                                    brand identity by collecting, storing and distributing design tokens and assets —
-                                    automatically.</p>
-                            </div>
-
-                            <div class="mt-6 flex items-center justify-center gap-4">
-                                <a href="#"
-                                    class="transform rounded-md bg-indigo-600/95 px-5 py-3 font-medium text-white transition-colors hover:bg-indigo-700">Get
-                                    started for free</a>
-                                <a href="#"
-                                    class="transform rounded-md border border-slate-200 px-5 py-3 font-medium text-slate-900 transition-colors hover:bg-slate-50">
-                                    Request a demo </a>
-                            </div>
+                        <div class="pt-24">
+                            <livewire:welcome.beranda />
                         </div>
                     </section>
 

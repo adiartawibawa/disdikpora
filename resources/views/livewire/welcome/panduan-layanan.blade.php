@@ -109,7 +109,7 @@
             @endforelse
         </div>
         <div class="card-actions flex flex-col items-center">
-            <button class="btn btn-primary">Saya Mengerti</button>
+            <button wire:click="$dispatch('closeModal')" class="btn btn-primary">Saya Mengerti</button>
         </div>
     </div>
 </div>
