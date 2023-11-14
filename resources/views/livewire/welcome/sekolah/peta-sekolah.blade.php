@@ -37,8 +37,7 @@
             `<div class="">Kode Pos : ${feature.properties.kode_pos}</div>` +
             `<div class="">Desa : ${feature.properties.desa}</div>` +
             `<div class="">Kecamatan : ${feature.properties.kecamatan}</div>` +
-            // `<button wire:click="${feature.properties.url}" target="_blank" class="btn btn-xs btn-ghost mt-4">detail</button>`;
-            `<a href="${feature.properties.url}" target="_blank" class="btn btn-xs btn-ghost mt-4">detail</a>`;
+            `<button wire:click="${feature.properties.url}" target="_blank" class="btn btn-xs btn-ghost mt-4">detail</button>`;
 
         layer.bindPopup(popupContent);
     }

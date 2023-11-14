@@ -7,9 +7,8 @@ use Asantibanez\LivewireCharts\Facades\LivewireCharts;
 use Livewire\WithPagination;
 use LivewireUI\Modal\ModalComponent;
 use Illuminate\Support\Str;
-use Livewire\Component;
 
-class DetailSekolah extends Component
+class DetailSekolah extends ModalComponent
 {
     use WithPagination;
 
@@ -19,6 +18,17 @@ class DetailSekolah extends Component
     public $swastaIcon;
     public $shadowIcon;
     public $data = [];
+
+    protected static array $maxWidths = [
+
+        '2xl' => 'sm:max-w-2xl',
+
+    ];
+
+    public static function modalMaxWidth(): string
+    {
+        return '2xl';
+    }
 
     public function mount()
     {
@@ -56,7 +66,7 @@ class DetailSekolah extends Component
     public function getGtkSekolah()
     {
         $data = $this->getDetailSekolah()->gtk();
-        $gtk = $data->paginate(15);
+        $gtk = $data->paginate(5);
 
         return $gtk;
     }
@@ -109,10 +119,10 @@ class DetailSekolah extends Component
     public function render()
     {
         return view('livewire.welcome.sekolah.detail-sekolah', [
-            'sekolah' => $this->getSekolah(),
+            'detailSekolah' => $this->getSekolah(),
             'kepsek' => $this->getKepsek(),
             'gtks' => $this->getGtkSekolah(),
             'chartGtk' => $this->chartKepegawaian(),
-        ])->layout('layouts.base');
+        ]);
     }
 }

@@ -31,17 +31,18 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Scripts -->
+    @livewireChartsScripts
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     @stack('styles')
 
 </head>
 
-<body class="antialiased h-screen">
+<body class="font-sans antialiased h-screen">
 
     @yield('content')
-{{-- nanti dihapus --}}
-{{ $slot }}
+
     @livewire('wire-elements-modal')
 
     @stack('scripts')

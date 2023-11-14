@@ -3,7 +3,7 @@
         <div class="card-title mb-10 flex flex-col items-center">
             <h2>Panduan Layanan {{ $layanan->name }}</h2>
         </div>
-        <div class="mx-auto mb-20 max-w-4xl">
+        <div class="mx-auto mb-auto max-w-4xl h-[22rem] overflow-y-auto no-scrollbar">
             @forelse ($panduan as $item)
                 @if ($loop->first)
                     <div class="flex flex-col-reverse w-full md:flex-row-reverse items-start justify-end gap-4">
@@ -108,7 +108,7 @@
                 </div>
             @endforelse
         </div>
-        <div class="card-actions flex flex-col items-center">
+        <div class="card-actions flex flex-col items-center mt-6">
             <button wire:click="$dispatch('closeModal')" class="btn btn-primary">Saya Mengerti</button>
         </div>
     </div>

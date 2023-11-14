@@ -48,8 +48,7 @@ class PetaSekolah extends Component
                     'kode_pos' => $item->village->first()->meta['pos'],
                     'desa' => ucwords(Str::lower($item->village->first()->name)),
                     'kecamatan' => ucwords(Str::lower($item->village->first()->district->name)),
-                    'url' => route('detail', $item->id),
-                    // 'url' => "\$dispatch('openModal', {component: 'welcome.sekolah.detail-sekolah', arguments: {sekolah: '$item->id'}})",
+                    'url' => "\$dispatch('openModal', {component: 'welcome.sekolah.detail-sekolah', arguments: {sekolah: '$item->id'}})",
                     // Tambahkan atribut lain sesuai kebutuhan
                 ],
             ];

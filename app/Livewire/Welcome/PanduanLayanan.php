@@ -15,13 +15,13 @@ class PanduanLayanan extends ModalComponent
 
     protected static array $maxWidths = [
 
-        '3xl' => 'sm:max-w-3xl',
+        '2xl' => 'sm:max-w-2xl',
 
     ];
 
     public static function modalMaxWidth(): string
     {
-        return '3xl';
+        return '2xl';
     }
 
     public function mount()
