@@ -1,14 +1,14 @@
 @extends('layouts.base')
 
 @section('content')
-    <div class="relative">
-
+    <div class="relative overflow-hidden">
+        <img class="absolute top-0 -left-1/4 opacity-50" src="https://tailwindui.com/img/beams-home@95.jpg" alt="">
         <div class="drawer flex flex-col md:flex-row h-screen">
             <input id="drawer" type="checkbox" class="drawer-toggle" />
             <div class="drawer-content overflow-y-auto flex flex-col justify-between h-screen no-scrollbar w-full md:w-[70%] "
                 x-data="{ activeTab: 1 }">
-                <div class="md:sticky md:top-0 md:z-10 shadow-sm absolute z-40 bottom-0 w-full">
-                    <nav class="navbar bg-base-100 w-full">
+                <div class="md:sticky md:top-0 md:z-10 absolute z-40 bottom-0 w-full">
+                    <nav class="navbar bg-transparent w-full">
                         <div class="flex-1">
                             <a class="btn btn-ghost normal-case text-xl">{{ config('app.name') }}</a>
                         </div>
@@ -93,7 +93,8 @@
                     </section>
                 </div>
                 <!-- Page content here -->
-                <footer class="footer footer-center pb-8 bg-base-100 text-xs text-neutral-400 max-w-[100vw] px-6 xl:px-6">
+                <footer
+                    class="footer footer-center pb-8 bg-transparent text-xs text-neutral-400 max-w-[100vw] px-6 xl:px-6">
                     <aside class="flex flex-col md:flex-row w-full md:justify-between items-center">
                         <div>Copyright © {{ date('Y') }} - {{ config('app.name') }}</div>
                         <div>Made with ❤️ by Adi Arta Wibawa</div>

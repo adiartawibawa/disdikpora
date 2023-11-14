@@ -1,10 +1,12 @@
 <div class="flex">
     <div class="mx-auto px-6 xl:container md:px-12">
-        <div class="mb-16 md:w-2/3 lg:w-1/2">
-            <h2 class="mb-4 text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">Daftar Layanan Kami</h2>
-            <p class="text-gray-600 dark:text-gray-300">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum eaque reiciendis, obcaecati ipsam quo
-                modi dolorum quisquam esse doloremque eveniet.
+        <div class="mb-16 md:w-2/3">
+            <h2 class="mb-4 text-2xl font-bold text-slate-900 dark:text-white md:text-4xl">Layanan Kami</h2>
+            <p class="text-slate-600 dark:text-gray-300">
+                Kami siap memberikan layanan pendidikan terbaik kepada masyarakat. Platform ini memudahkan akses dan
+                informasi terkini untuk kebutuhan publik. Dengan komitmen inklusif, transparan, dan inovatif, kami
+                membantu memenuhi kebutuhan pendidikan dengan efisiensi dan keramahan. Bersama, kita majukan masa depan
+                pendidikan menuju yang lebih baik.
             </p>
         </div>
         <div class="grid gap-6 px-4 sm:grid-cols-2 sm:px-0 md:grid-cols-3">

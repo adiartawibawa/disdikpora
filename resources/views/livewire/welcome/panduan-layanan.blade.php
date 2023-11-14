@@ -3,7 +3,7 @@
         <div class="card-title mb-10 flex flex-col items-center">
             <h2>Panduan Layanan {{ $layanan->name }}</h2>
         </div>
-        <div class="mx-auto mb-20 max-w-2xl">
+        <div class="mx-auto mb-20 max-w-4xl">
             @forelse ($panduan as $item)
                 @if ($loop->first)
                     <div class="flex flex-col-reverse w-full md:flex-row-reverse items-start justify-end gap-4">
