@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire\Welcome;
+namespace App\Livewire\Welcome\Sekolah;
 
 use App\Models\Sekolah;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
-class SchoolMap extends Component
+class PetaSekolah extends Component
 {
     public $lat = '-8.4644416';
     public $lon = '115.2808069';
@@ -48,7 +48,8 @@ class SchoolMap extends Component
                     'kode_pos' => $item->village->first()->meta['pos'],
                     'desa' => ucwords(Str::lower($item->village->first()->name)),
                     'kecamatan' => ucwords(Str::lower($item->village->first()->district->name)),
-                    'url' => route('sekolah.profile', $item->id),
+                    'url' => route('detail', $item->id),
+                    // 'url' => "\$dispatch('openModal', {component: 'welcome.sekolah.detail-sekolah', arguments: {sekolah: '$item->id'}})",
                     // Tambahkan atribut lain sesuai kebutuhan
                 ],
             ];
@@ -68,7 +69,7 @@ class SchoolMap extends Component
 
     public function render()
     {
-        return view('livewire.welcome.school-map', [
+        return view('livewire.welcome.sekolah.peta-sekolah', [
             'sekolah' => $this->makeGeoJson()
         ]);
     }

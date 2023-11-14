@@ -8,6 +8,7 @@ use App\Livewire\Pages\Sekolahs\ProfileSekolah;
 use App\Livewire\Pages\Sekolahs\Sekolah;
 use App\Livewire\Pages\Users\AllUser;
 use App\Livewire\Pages\Users\FormUser;
+use App\Livewire\Welcome\Sekolah\DetailSekolah;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'welcome');
+
+Route::get('/detail-sekolah/{sekolah}', DetailSekolah::class)->name('detail');
 
 Route::middleware(['auth'])->group(function () {
     // Profile Pages

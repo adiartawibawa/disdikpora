@@ -133,9 +133,9 @@
                 </ul>
             </div>
 
-            <aside class="w-full md:w-[30%] bg-red-600">
+            <aside class="w-full md:w-[30%]">
                 <div class="z-10 sticky">
-                    <livewire:welcome.school-map />
+                    <livewire:welcome.sekolah.peta-sekolah />
                 </div>
             </aside>
         </div>

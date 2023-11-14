@@ -40,7 +40,8 @@
 <body class="antialiased h-screen">
 
     @yield('content')
-
+{{-- nanti dihapus --}}
+{{ $slot }}
     @livewire('wire-elements-modal')
 
     @stack('scripts')
