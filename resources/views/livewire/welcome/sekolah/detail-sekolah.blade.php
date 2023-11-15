@@ -14,19 +14,19 @@
             <ul class="flex border-b overflow-x-auto no-scrollbar">
                 <li @click="openTab = 1" :class="{ '-mb-px': openTab === 1 }" class="-mb-px mr-1">
                     <button :class="openTab === 1 ? activeClasses : inactiveClasses"
-                        class="bg-white inline-block py-2 px-4 font-semibold">
+                        class="inline-block py-2 px-4 font-semibold">
                         Umum
                     </button>
                 </li>
                 <li @click="openTab = 2" :class="{ '-mb-px': openTab === 2 }" class="mr-1">
                     <button :class="openTab === 2 ? activeClasses : inactiveClasses"
-                        class="bg-white inline-block py-2 px-4 font-semibold">
+                        class="inline-block py-2 px-4 font-semibold">
                         Infografis
                     </button>
                 </li>
                 <li @click="openTab = 3" :class="{ '-mb-px': openTab === 3 }" class="mr-1">
                     <button :class="openTab === 3 ? activeClasses : inactiveClasses"
-                        class="bg-white inline-block py-2 px-4 font-semibold">
+                        class="inline-block py-2 px-4 font-semibold">
                         GTK
                     </button>
                 </li>
