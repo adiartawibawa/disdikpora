@@ -49,7 +49,7 @@
 
 </head>
 
-<body class="antialiased">
+<body class="antialiased bg-gray-50">
 
     <header class="bg-white" x-data="{ open: false }">
         <nav class="container relative flex items-center justify-between px-6 py-4 md:py-0 mx-auto text-red-800">
