@@ -5,6 +5,7 @@ namespace App\Livewire\Pages\Peta;
 use App\Filament\Resources\SekolahResource\Pages\ListSekolahs;
 use App\Models\Kabupaten;
 use App\Models\Sekolah;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 class PetaSekolah extends Component
@@ -145,6 +146,7 @@ class PetaSekolah extends Component
         return $geojsonString;
     }
 
+    #[Layout('layouts.front')]
     public function render()
     {
         $this->sekolah = $this->allSekolahMap();

@@ -51,7 +51,7 @@
 
 <body class="antialiased bg-gray-50">
 
-    <header class="bg-white" x-data="{ open: false }">
+    <header class="bg-white shadow-sm" x-data="{ open: false }">
         <nav class="container relative flex items-center justify-between px-6 py-4 md:py-0 mx-auto text-red-800">
             <a href="/" class="inline-flex items-center space-x-2">
                 <img class="w-8 h-8 md:w-12 md:h-12"
@@ -82,34 +82,41 @@
 
             <div x-cloak :class="[open ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']"
                 class="absolute inset-x-0 z-30 w-full px-6 py-8 space-y-6 transition-all duration-300 ease-in-out bg-red-50 top-16 md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:space-y-0 md:-mx-6 md:flex md:items-center">
-                <a href="/"
-                    class="block hover:text-red-300 md:hover:text-red-800 transition-colors duration-300 md:px-6 md:hover:bg-red-300 md:py-6">
+                <x-front-nav :href="route('welcome')" :active="request()->routeIs('welcome')">
                     Beranda
-                </a>
-                <a href="#"
-                    class="block hover:text-red-300 md:hover:text-red-800 transition-colors duration-300 md:px-6 md:hover:bg-red-300 md:py-6">
+                </x-front-nav>
+                <x-front-nav :href="route('peta.sekolah')" :active="request()->routeIs('peta.sekolah')">
                     Peta Sekolah
-                </a>
-                <a href="/layanan"
-                    class="block hover:text-red-300 md:hover:text-red-800 transition-colors duration-300 md:px-6 md:hover:bg-red-300 md:py-6">
+                </x-front-nav>
+                <x-front-nav :href="route('layanan')" :active="request()->routeIs('layanan')">
                     Layanan
-                </a>
-                <a href="#"
-                    class="block hover:text-red-300 md:hover:text-red-800 transition-colors duration-300 md:px-6 md:hover:bg-red-300 md:py-6">
-                    Kontak
-                </a>
-                <a href="#"
-                    class="block hover:text-red-300 md:hover:text-red-800 transition-colors duration-300 md:px-6 md:hover:bg-red-300 md:py-6">
-                    Login
-                </a>
-                <a href="#"
-                    class="block hover:text-red-300 md:hover:text-red-800 transition-colors duration-300 md:px-6 md:hover:bg-red-300 md:py-6">
-                    Register
-                </a>
-                <a href="#"
-                    class="block hover:text-red-300 md:hover:text-red-800 transition-colors duration-300 md:px-6 md:hover:bg-red-300 md:py-6">
-                    Dasbor
-                </a>
+                </x-front-nav>
+                {{-- <x-front-nav :href="route('kegiatan')" :active="request()->routeIs('kegiatan')">
+                    Kegiatan
+                </x-front-nav> --}}
+                @if (Route::has('login'))
+                    @auth
+                        <a href="{{ url('/admin') }}"
+                            class="block hover:text-red-300 md:hover:text-red-800 transition-colors duration-300 md:px-6 md:hover:bg-red-300 md:py-6">
+                            Dasbor
+                        </a>
+                    @else
+                        <a href="{{ route('login') }}"
+                            class="block hover:text-red-300 md:hover:text-red-800 transition-colors duration-300 md:px-6 md:hover:bg-red-300 md:py-6">
+                            Login
+                        </a>
+                        {{-- @if (Route::has('register'))
+                            <a href="#"
+                                class="block hover:text-red-300 md:hover:text-red-800 transition-colors duration-300 md:px-6 md:hover:bg-red-300 md:py-6">
+                                Register
+                            </a>
+                        @endif --}}
+                    @endauth
+                @else
+                @endif
+
+
+
             </div>
         </nav>
     </header>
