@@ -54,7 +54,7 @@ class SarprasSeeder extends Seeder
                 'njop' => 750000
             ]);
 
-            for ($i = 0; $i < 10; $i++) {
+            for ($i = 0; $i < 5; $i++) {
 
                 $kode = 'B-0' . $faker->numberBetween(1, 99);
                 $p = $faker->numberBetween(5, 50);
@@ -84,7 +84,7 @@ class SarprasSeeder extends Seeder
                     // 'luas_tutup_atap' => ,
                 ]);
 
-                for ($j = 0; $j < 6; $j++) {
+                for ($j = 0; $j < 3; $j++) {
                     $pj = $faker->numberBetween(5, 10);
                     $lb = $faker->numberBetween(5, 10);
                     $ruang = $referensis[array_rand($referensis)];
