@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\Pages\Kegiatan\KegiatanAll;
+use App\Livewire\Pages\Kegiatan\KegiatanSingle;
 use App\Livewire\Pages\Layanans\SingleLayanan;
 use App\Livewire\Pages\Peta\PetaSekolah;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +24,8 @@ Route::get('/layanan/{slug}', SingleLayanan::class)->name('layanan.single');
 
 Route::get('/peta-sekolah', PetaSekolah::class)->name('peta.sekolah');
 
-// Route::get('/kegiatan', );
+Route::get('/kegiatan', KegiatanAll::class)->name('kegiatan');
+Route::get('/kegiatan/{slug}', KegiatanSingle::class)->name('kegiatan.single');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

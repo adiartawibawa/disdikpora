@@ -91,9 +91,9 @@
                 <x-front-nav :href="route('layanan')" :active="request()->routeIs('layanan')">
                     Layanan
                 </x-front-nav>
-                {{-- <x-front-nav :href="route('kegiatan')" :active="request()->routeIs('kegiatan')">
+                <x-front-nav :href="route('kegiatan')" :active="request()->routeIs('kegiatan')">
                     Kegiatan
-                </x-front-nav> --}}
+                </x-front-nav>
                 @if (Route::has('login'))
                     @auth
                         <a href="{{ url('/admin') }}"
