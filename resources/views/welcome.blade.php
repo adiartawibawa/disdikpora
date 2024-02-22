@@ -1,10 +1,8 @@
-@extends('layouts.front')
-
 @push('styles')
     {{--  --}}
 @endpush
 
-@section('content')
+<x-front-layout>
     <section class="relative">
         <div class="absolute w-full bg-center bg-cover place-items-center h-[38rem] z-10">
             <div class="flex items-center justify-center w-full h-full bg-gray-900/40">
@@ -52,7 +50,8 @@
                 <iframe class="object-cover w-full rounded-xl h-96" src="https://www.youtube.com/embed/aqvjzO4MuK8"
                     title="Profil dan Potensi Kabupaten Badung, Bali" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen alt="Video Profil Dinas Pendidikan, Kepemudaan dan Olah Raga Kabupaten Badung"></iframe>
+                    allowfullscreen
+                    alt="Video Profil Dinas Pendidikan, Kepemudaan dan Olah Raga Kabupaten Badung"></iframe>
             </div>
         </div>
     </section>
@@ -215,8 +214,7 @@
             </div>
         </div>
     </section>
-@endsection
-
+</x-front-layout>
 
 @push('scripts')
     {{--  --}}

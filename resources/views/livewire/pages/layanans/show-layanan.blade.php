@@ -37,7 +37,8 @@
                                 <div class="mx-4 p-6 flex flex-col justify-center items-center w-3/5 h-full border-2 border-red-400 rounded-xl bg-cover"
                                     style="background-image: url('{{ $item->ilustrasi_url }}')">
                                     <div class="flex justify-center pb-1.5 mt-32">
-                                        <a href="#" target="_blank" class="group relative z-10 block text-white">
+                                        <a href="{{ route('layanan.single', $item->slug) }}" target="_blank"
+                                            class="group relative z-10 block text-white">
                                             <div
                                                 class="bg-red-500 flex items-center justify-center gap-3 rounded-bl-3xl rounded-tr-3xl px-6 py-4 transition duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:transform-none">
                                                 <div>Mulai</div>

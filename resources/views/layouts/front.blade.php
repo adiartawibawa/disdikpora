@@ -115,7 +115,7 @@
     </header>
 
     <main>
-        @yield('content')
+        {{ $slot }}
     </main>
 
     <footer class="bg-white dark:bg-gray-900">
@@ -189,13 +189,17 @@
 
                     <div class="flex flex-col items-start mt-5 space-y-2">
                         <a href="#"
-                            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-red-400 hover:underline hover:text-red-500">Translation</a>
+                            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-red-400 hover:underline hover:text-red-500">
+                            Legalisir Raport
+                        </a>
                         <a href="#"
-                            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-red-400 hover:underline hover:text-red-500">Proofreading
-                            & Editing</a>
+                            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-red-400 hover:underline hover:text-red-500">
+                            Legalisir Ijazah
+                        </a>
                         <a href="#"
-                            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-red-400 hover:underline hover:text-red-500">Content
-                            Creation</a>
+                            class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-red-400 hover:underline hover:text-red-500">
+                            Legalisir Dokumen
+                        </a>
                     </div>
                 </div>
 
