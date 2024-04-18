@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         $organisation = Organisation::first() ?? Organisation::create([
-            'name' => 'Default Organisation',
+            'name' => 'Dinas Pendidikan Kepemudaan dan Olahraga Kabupaten Badung',
         ]);
 
         Schema::table('users', function (Blueprint $table) use ($organisation) {

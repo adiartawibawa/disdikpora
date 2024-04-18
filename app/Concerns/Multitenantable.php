@@ -18,7 +18,7 @@ trait Multitenantable
         if (auth()->user() && !(auth()->user()->hasRole(['super_admin', 'admin']))) {
 
             static::addGlobalScope('organisation', function (Builder $query) {
-                if (auth()->check()) {
+                if (auth()->check() && (auth()->user()->organisation_id !== null)) {
                     $query->where('organisation_id', auth()->user()->organisation_id);
                     // or with a `organisation` relationship defined:
                     $query->whereBelongsTo(auth()->user()->organisation);
