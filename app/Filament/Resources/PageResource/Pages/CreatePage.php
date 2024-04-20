@@ -19,15 +19,15 @@ class CreatePage extends CreateRecord
         return $data;
     }
 
-    // protected function handleRecordCreation(array $data): Model
-    // {
-    //     $page = static::getModel()::create($data);
+    protected function handleRecordCreation(array $data): Model
+    {
+        $page = static::getModel()::create($data);
 
-    //     PageMenu::create([
-    //         'title' => $page->title,
-    //         'url' => config('app.url') . $page->slug
-    //     ]);
+        PageMenu::create([
+            'title' => $page->title,
+            'url' => config('app.url') . $page->slug
+        ]);
 
-    //     return $page;
-    // }
+        return $page;
+    }
 }
