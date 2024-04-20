@@ -22,14 +22,12 @@ class KegiatanResource extends Resource
 {
     protected static ?string $model = Kegiatan::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('organisation_id')
-                    ->relationship('organisation', 'name'),
                 Forms\Components\TextInput::make('title')
                     ->label('Kegiatan')
                     ->required()
@@ -64,13 +62,11 @@ class KegiatanResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('organisation.name')
+                Tables\Columns\TextColumn::make('title')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('title')
+                Tables\Columns\TextColumn::make('organisation.name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('published_at')
                     ->dateTime()
