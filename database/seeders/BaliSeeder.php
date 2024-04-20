@@ -29,7 +29,10 @@ class BaliSeeder extends Seeder
             return $arr + ['created_at' => $now, 'updated_at' => $now];
         }, $data_provinsis);
 
-        DB::table('provinsis')->insertOrIgnore($data_provinsis);
+        $collection_provinsis = collect($data_provinsis);
+        foreach ($collection_provinsis->chunk(50) as $chunk) {
+            DB::table('provinsis')->insertOrIgnore($chunk->toArray());
+        }
 
         // Cities Seeder
         $cities = new CsvToArray();

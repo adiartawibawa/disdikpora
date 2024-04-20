@@ -14,6 +14,7 @@
         "doctrine/dbal": "^3.7",
         "filament/filament": "^3.1",
         "filament/spatie-laravel-media-library-plugin": "3.1",
+        "filament/spatie-laravel-settings-plugin": "3.1",
         "filament/spatie-laravel-tags-plugin": "3.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
@@ -21,7 +22,8 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.0",
         "livewire/volt": "^1.0",
-        "solution-forest/filament-tree": "^2.0"
+        "solution-forest/filament-tree": "^2.0",
+        "tapp/filament-timezone-field": "3.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

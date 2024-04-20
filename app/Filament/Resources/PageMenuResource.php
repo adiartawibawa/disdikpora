@@ -20,11 +20,11 @@ class PageMenuResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-list-bullet';
 
-    protected static ?string $navigationGroup = 'Manages Application';
+    protected static ?string $navigationGroup = 'Manajemen Aplikasi';
 
     protected static ?string $navigationLabel = 'Menus';
 
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 2;
 
     // you can customize the maximum depth of your tree
     protected static int $maxDepth = 2;
