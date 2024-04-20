@@ -34,6 +34,7 @@ class User extends Authenticatable implements HasAvatar, HasMedia
      * @var array<int, string>
      */
     protected $fillable = [
+        'organisation_id',
         'name',
         'username',
         'email',

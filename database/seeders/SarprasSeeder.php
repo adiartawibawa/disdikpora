@@ -19,21 +19,7 @@ class SarprasSeeder extends Seeder
      */
     public function run(): void
     {
-        $prasaranas = Prasarana::defaultJenisPrasarana();
-
-        foreach ($prasaranas as $item) {
-            Prasarana::firstOrCreate($item);
-        }
-
-        $this->command->info('Default jenis prasarana ditambahkan.');
-
         $referensis = ReferensiRuang::defaultReferensiRuang();
-
-        foreach ($referensis as $item) {
-            ReferensiRuang::firstOrCreate($item);
-        }
-
-        $this->command->info('Default referensi ruang ditambahkan.');
 
         $sekolahs = Sekolah::all();
         $faker = Faker::create();

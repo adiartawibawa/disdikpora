@@ -3,24 +3,17 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Pages\Dashboard;
-use App\Filament\Resources\GuruTendikKebutuhanResource\Widgets\StatusKebutuhanOverview;
-use App\Filament\Resources\GuruTendikResource\Widgets\PtkChartOverview;
-use App\Filament\Resources\SarprasBangunanResource\Widgets\BangunanOverview;
-use App\Filament\Resources\SarprasRuangResource\Widgets\RuanganOverview;
-use App\Filament\Widgets\TenancyInfoWidget;
 use Filament\FontProviders\BunnyFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\MenuItem;
-use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Colors\Color;
 use Filament\Support\Facades\FilamentAsset;
-use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;

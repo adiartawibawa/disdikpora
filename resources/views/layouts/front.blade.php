@@ -99,10 +99,17 @@
                 </x-front-nav>
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{ url('/admin') }}"
-                            class="block hover:text-red-300 md:hover:text-red-800 transition-colors duration-300 md:px-6 md:hover:bg-red-300 md:py-6">
-                            Dasbor
-                        </a>
+                        @empty(auth()->user()->organisation_id !== null)
+                            <a href="{{ route('user.dashboard') }}"
+                                class="block hover:text-red-300 md:hover:text-red-800 transition-colors duration-300 md:px-6 md:hover:bg-red-300 md:py-6">
+                                Dasbor
+                            </a>
+                        @else
+                            <a href="{{ url('/admin') }}"
+                                class="block hover:text-red-300 md:hover:text-red-800 transition-colors duration-300 md:px-6 md:hover:bg-red-300 md:py-6">
+                                Dasbor
+                            </a>
+                        @endempty
                     @else
                         <a href="{{ route('login') }}"
                             class="block hover:text-red-300 md:hover:text-red-800 transition-colors duration-300 md:px-6 md:hover:bg-red-300 md:py-6">

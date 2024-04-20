@@ -28,14 +28,19 @@ Route::get('/peta-sekolah', PetaSekolah::class)->name('peta.sekolah');
 Route::get('/kebutuhan-guru', KebutuhanGuru::class)->name('guru.kebutuhan');
 
 Route::get('/kegiatan', KegiatanAll::class)->name('kegiatan');
+
 Route::get('/kegiatan/{slug}', KegiatanSingle::class)->name('kegiatan.single');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::middleware(['auth', 'verified'])->prefix('user')->group(function () {
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+    Route::view('dashboard', 'users.dashboard')->name('user.dashboard');
+
+    Route::view('layanan', 'users.layanan.index')->name('user.layanan');
+
+    Route::view('permohonan', 'users.permohonan.index')->name('user.permohonan');
+
+    Route::view('profile', 'profile')->name('profile');
+});
+
 
 require __DIR__ . '/auth.php';
