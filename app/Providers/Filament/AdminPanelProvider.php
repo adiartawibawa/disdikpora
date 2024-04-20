@@ -60,7 +60,7 @@ class AdminPanelProvider extends PanelProvider
             ->userMenuItems([
                 MenuItem::make()->label('Dashboard')
                     ->icon('heroicon-o-fire')
-                    ->url('/dashboard'),
+                    ->url('/user/dashboard'),
             ])
             ->databaseNotifications()
             ->sidebarCollapsibleOnDesktop()

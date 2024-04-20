@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         }
 
         // $this->command->call("shield:install");
-        $this->command->call('shield:install');
+        $this->command->call('shield:generate', ['--all' => 'policies_and_permissions,policies,permissions']);
 
         $this->call([
             // Filament-shield plugin seeder
