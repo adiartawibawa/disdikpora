@@ -58,11 +58,11 @@ class Topic extends Model
      *
      * @return BelongsToMany
      */
-    public function kegiatans(): BelongsToMany
+    public function posts(): BelongsToMany
     {
         // TODO: This should be a hasMany() relationship?
 
-        return $this->belongsToMany(Kegiatan::class, 'kegiatans_topics', 'topic_id', 'kegiatan_id');
+        return $this->belongsToMany(Post::class, 'posts_topics', 'topic_id', 'post_id');
     }
 
     /**
@@ -85,7 +85,7 @@ class Topic extends Model
         parent::boot();
 
         static::deleting(function (self $topic) {
-            $topic->kegiatans()->detach();
+            $topic->posts()->detach();
         });
     }
 }

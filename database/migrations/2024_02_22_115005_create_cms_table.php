@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kegiatans', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('slug');
             $table->string('title');
@@ -20,6 +20,7 @@ return new class extends Migration
             $table->dateTime('published_at')->nullable();
             $table->string('featured_image_caption')->nullable();
             $table->json('meta')->nullable();
+            $table->boolean('as_page')->default(false);
             $table->organisation()->nullable();
             $table->softDeletes();
             $table->timestamps();
@@ -35,10 +36,29 @@ return new class extends Migration
             $table->index('created_at');
         });
 
-        Schema::create('kegiatans_topics', function (Blueprint $table) {
-            $table->uuid('kegiatan_id');
+        Schema::create('posts_topics', function (Blueprint $table) {
+            $table->uuid('post_id');
             $table->uuid('topic_id');
-            $table->unique(['kegiatan_id', 'topic_id']);
+            $table->unique(['post_id', 'topic_id']);
+        });
+
+        Schema::create('views', function (Blueprint $table) {
+            $table->increments('id');
+            $table->uuid('post_id')->index();
+            $table->string('ip')->nullable();
+            $table->text('agent')->nullable();
+            $table->string('referer')->nullable();
+            $table->timestamps();
+            $table->index('created_at');
+        });
+
+        Schema::create('visits', function (Blueprint $table) {
+            $table->increments('id');
+            $table->uuid('post_id');
+            $table->string('ip')->nullable();
+            $table->text('agent')->nullable();
+            $table->string('referer')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -47,8 +67,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kegiatans');
+        Schema::dropIfExists('posts');
         Schema::dropIfExists('topics');
-        Schema::dropIfExists('kegiatans_topics');
+        Schema::dropIfExists('posts_topics');
+        Schema::dropIfExists('views');
+        Schema::dropIfExists('visits');
     }
 };

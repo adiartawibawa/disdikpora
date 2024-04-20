@@ -17,7 +17,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Tags\HasTags;
 
-class Kegiatan extends Model implements HasMedia
+class Page extends Model implements HasMedia
 {
     use SoftDeletes;
     use Sluggable;
@@ -32,7 +32,7 @@ class Kegiatan extends Model implements HasMedia
      *
      * @var string
      */
-    protected $table = 'kegiatans';
+    protected $table = 'posts';
 
     /**
      * The attributes that aren't mass assignable.
@@ -93,10 +93,30 @@ class Kegiatan extends Model implements HasMedia
 
         return $this->belongsToMany(
             Topic::class,
-            'kegiatans_topics',
-            'kegiatan_id',
+            'posts_topics',
+            'post_id',
             'topic_id'
         );
+    }
+
+    /**
+     * Get the views relationship.
+     *
+     * @return HasMany
+     */
+    public function views(): HasMany
+    {
+        return $this->hasMany(View::class);
+    }
+
+    /**
+     * Get the visits relationship.
+     *
+     * @return HasMany
+     */
+    public function visits(): HasMany
+    {
+        return $this->hasMany(Visit::class);
     }
 
     /**
@@ -165,6 +185,11 @@ class Kegiatan extends Model implements HasMedia
     {
         parent::boot();
 
+        // filter yang hanya menampilkan record dengan as_page bernilai false
+        static::addGlobalScope('as_page', function ($builder) {
+            $builder->where('as_page', true);
+        });
+
         static::deleting(function (self $post) {
             $post->tags()->detach();
             $post->topic()->detach();
@@ -173,6 +198,6 @@ class Kegiatan extends Model implements HasMedia
 
     public function getFeaturedImageUrlAttribute()
     {
-        return $this->getFirstMediaUrl('kegiatan');
+        return $this->getFirstMediaUrl('post');
     }
 }

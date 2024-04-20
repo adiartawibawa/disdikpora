@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\KegiatanResource\Pages;
-use App\Filament\Resources\KegiatanResource\RelationManagers;
-use App\Models\Post;
+use App\Filament\Resources\PageResource\Pages;
+use App\Filament\Resources\PageResource\RelationManagers;
+use App\Models\Page;
 use Filament\Forms;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
@@ -19,23 +19,23 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Tags\Tag;
 
-class KegiatanResource extends Resource
+class PageResource extends Resource
 {
-    protected static ?string $model = Post::class;
+    protected static ?string $model = Page::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('title')
-                    ->label('Kegiatan')
+                    ->label('Halaman')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\DateTimePicker::make('published_at'),
                 Forms\Components\RichEditor::make('body')
-                    ->label('Uraian Kegiatan')
+                    ->label('Uraian Halaman')
                     ->columnSpanFull(),
                 Forms\Components\Select::make('topic')
                     ->multiple()
@@ -52,12 +52,14 @@ class KegiatanResource extends Resource
                     ->reorderable()
                     ->type('kegiatan'),
                 SpatieMediaLibraryFileUpload::make('featured_image_caption')
-                    ->label('Foto Kegiatan')
+                    ->label('Foto Halaman')
                     ->multiple()
-                    ->collection('kegiatan')
+                    ->collection('halaman')
                     ->columnSpanFull(),
                 Forms\Components\Textarea::make('meta')
                     ->columnSpanFull(),
+                Hidden::make('as_page')
+                    ->default(true),
             ]);
     }
 
@@ -113,9 +115,9 @@ class KegiatanResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListKegiatans::route('/'),
-            'create' => Pages\CreateKegiatan::route('/create'),
-            'edit' => Pages\EditKegiatan::route('/{record}/edit'),
+            'index' => Pages\ListPages::route('/'),
+            'create' => Pages\CreatePage::route('/create'),
+            'edit' => Pages\EditPage::route('/{record}/edit'),
         ];
     }
 
