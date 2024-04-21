@@ -51,7 +51,7 @@
                                 <div class="rounded-full bg-red-500 px-4 py-2 text-white">{{ $loop->iteration }}</div>
                                 <div class="text-slate-600">
                                     <div class="text-2xl font-bold">{{ $panduan['judul'] }}</div>
-                                    <p class="text-sm text-slate-500">{!! $panduan['konten'] !!}</p>
+                                    <article class="prose text-sm text-slate-500">{!! $panduan['konten'] !!}</article>
                                     @if ($panduan['file'] != null)
                                         <a href="{{ url('/') . '/storage/' . $panduan['file'] }}" target="_blank"
                                             class="inline-flex items-center mt-4 px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-red-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">
@@ -95,7 +95,7 @@
                                     </div>
                                     <div class="text-slate-600">
                                         <div class="text-2xl font-bold">{{ $panduan['judul'] }}</div>
-                                        <p class="text-sm text-slate-500">{!! $panduan['konten'] !!}</p>
+                                        <article class="prose text-sm text-slate-500">{!! $panduan['konten'] !!}</article>
                                         @if ($panduan['file'] != null)
                                             <a href="{{ url('/') . '/storage/' . $panduan['file'] }}" target="_blank"
                                                 class="inline-flex items-center mt-4 px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-red-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">
@@ -137,7 +137,7 @@
                                     </div>
                                     <div class="text-slate-600">
                                         <div class="text-2xl font-bold">{{ $panduan['judul'] }}</div>
-                                        <p class="text-sm text-slate-500">{!! $panduan['konten'] !!}</p>
+                                        <article class="prose text-sm text-slate-500">{!! $panduan['konten'] !!}</article>
                                         @if ($panduan['file'] != null)
                                             <a href="{{ url('/') . '/storage/' . $panduan['file'] }}" target="_blank"
                                                 class="inline-flex items-center mt-4 px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-red-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">

@@ -5,6 +5,7 @@ use App\Livewire\Pages\Kegiatan\KegiatanSingle;
 use App\Livewire\Pages\Layanans\SingleLayanan;
 use App\Livewire\Pages\Peta\PetaSekolah;
 use App\Livewire\Pages\Sekolah\KebutuhanGuru;
+use App\Livewire\Users\Permohonan\CreatePermohonan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +39,7 @@ Route::middleware(['auth', 'verified'])->prefix('user')->group(function () {
     Route::view('layanan', 'users.layanan.index')->name('user.layanan');
 
     Route::view('permohonan', 'users.permohonan.index')->name('user.permohonan');
+    Route::get('/permohonan/{slug}/create', CreatePermohonan::class)->name('user.permohonan.create');
 
     Route::view('profile', 'profile')->name('profile');
 });

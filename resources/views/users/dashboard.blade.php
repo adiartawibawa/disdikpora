@@ -5,28 +5,9 @@
         </h2>
     </x-slot>
 
-    <div class="container px-6 py-6 mx-auto lg:py-16">
-        <div class="mb-6">
-            <div>Permohonan Layanan Terbaru</div>
-            <hr>
-            <div>
-                Anda belum ada mengajukan permohonan
-            </div>
-        </div>
-        <div class="mb-6">
-            <div>Layanan Kami</div>
-            <hr>
-            <div>
-                @livewire('pages.layanans.page-layanan')
-            </div>
-        </div>
-
-        <div class="mb-6">
-            <div>Arsip Permohonan</div>
-            <hr>
-            <div>
-                Arsip Belum Tersedia
-            </div>
+    <div class="py-12">
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
         </div>
     </div>
+
 </x-app-layout>

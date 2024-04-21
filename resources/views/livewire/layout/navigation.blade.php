@@ -61,7 +61,7 @@ $logout = function (Logout $logout) {
                     </x-slot>
 
                     <x-slot name="content">
-                        @if (auth()->user()->organisation_id !== null)
+                        @if (auth()->user()->hasRole(['super_admin', 'admin']))
                             <x-dropdown-link :href="url('admin')" wire:navigate>
                                 {{ __('Administrator') }}
                             </x-dropdown-link>
