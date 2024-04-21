@@ -31,9 +31,12 @@ class PtkChartOverview extends ChartWidget
         // Mendapatkan daftar pegawai dari model GuruTendik.
         $pegawais = $this->getPageTableQuery()->get();
 
-        // Jika tidak ada pegawai, kembalikan null.
-        if ($pegawais->count() === 0) {
-            return null;
+        // Jika tidak ada pegawai, kembalikan array kosong.
+        if ($pegawais->isEmpty()) {
+            return [
+                'datasets' => [],
+                'labels' => ['Pegawai'],
+            ];
         }
 
         // Inisialisasi array untuk menyimpan jumlah pegawai berdasarkan status kepegawaian.

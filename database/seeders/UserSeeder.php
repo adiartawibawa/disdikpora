@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
         ]);
 
         $admin_user = User::create([
-            'name' => 'User',
+            'name' => 'Admin Dinas',
             'email' => 'admindisdik@mail.test',
             'organisation_id' => $disdik_organization->id,
             'email_verified_at' => now(),
