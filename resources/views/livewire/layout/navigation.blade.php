@@ -30,11 +30,11 @@ $logout = function (Logout $logout) {
                         {{ __('Dasbor') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('user.layanan')" :active="request()->routeIs('user.layanan.*')" wire:navigate>
+                    <x-nav-link :href="route('user.layanan')" :active="request()->routeIs('user.layanan*')" wire:navigate>
                         {{ __('Layanan') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('user.permohonan')" :active="request()->routeIs('user.permohonan.*')" wire:navigate>
+                    <x-nav-link :href="route('user.permohonan')" :active="request()->routeIs('user.permohonan*')" wire:navigate>
                         {{ __('Permohonan') }}
                     </x-nav-link>
                 </div>
