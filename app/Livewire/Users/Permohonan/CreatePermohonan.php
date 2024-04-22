@@ -169,7 +169,7 @@ class CreatePermohonan extends Component implements HasForms
     public function render()
     {
         return view('livewire.users.permohonan.create', [
-            'data' => $this->layanan
+            'layanan' => $this->layanan
         ]);
     }
 }
