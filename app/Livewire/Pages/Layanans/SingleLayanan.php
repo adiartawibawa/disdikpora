@@ -36,16 +36,18 @@ class SingleLayanan extends Component implements HasForms
         $prasyarat = $this->layanan->prasyarat;
         $formFields = [];
 
-        foreach ($prasyarat as $field) {
-            // dd($field);
-            if ($field['type'] === 'string') {
-                $formFields[] = TextInput::make($field['nama'])
-                    ->label($field['desc'])
-                    ->required($field['required']);
-            } elseif ($field['type'] === 'text') {
-                $formFields[] = Textarea::make($field['nama'])
-                    ->label($field['desc'])
-                    ->required($field['required']);
+        if (!empty($prasyarat)) {
+            foreach ($prasyarat as $field) {
+                // dd($field);
+                if ($field['type'] === 'string') {
+                    $formFields[] = TextInput::make($field['nama'])
+                        ->label($field['desc'])
+                        ->required($field['required']);
+                } elseif ($field['type'] === 'text') {
+                    $formFields[] = Textarea::make($field['nama'])
+                        ->label($field['desc'])
+                        ->required($field['required']);
+                }
             }
         }
 
