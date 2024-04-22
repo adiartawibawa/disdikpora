@@ -5,13 +5,9 @@
             <p class="mt-6 text-base leading-8 text-gray-600">{{ $layanan->desc }}</p>
         </div>
         <div class="mx-auto max-w-xs px-8 mt-16">
-            {{-- <button wire:click="openModal('{{ $layanan->slug }}')"
-                class="mt-5 block w-full rounded-md bg-red-600 px-3 py-6 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">
-                Pengajuan Permohonan
-            </button> --}}
             <a href="{{ route('user.permohonan.create', $layanan->slug) }}"
                 class="mt-5 block w-full rounded-md bg-red-600 px-3 py-6 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">
-                Pengajuan Permohonan
+                Ajukan Permohonan
             </a>
         </div>
         <div class="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
@@ -140,18 +136,4 @@
             </div>
         </div>
     </section>
-
-    <x-filament::modal sticky-header width="5xl" id="modals">
-        @isset($this->form)
-            {{ $this->form }}
-        @endisset
-        <x-slot name="footerActions">
-            <div>
-                <button wire:click="closeModal()"
-                    class="bg-red-500 px-4 py-2 rounded-md text-white hover:bg-red-700">Ajukan</button>
-                <button wire:click="closeModal()"
-                    class="bg-white px-4 py-2 rounded-md text-slate-800 hover:bg-gray-200">Batal</button>
-            </div>
-        </x-slot>
-    </x-filament::modal>
 </div>
