@@ -191,6 +191,7 @@ class CreatePermohonan extends Component implements HasForms
                     new HtmlString(
                         Blade::render(<<<BLADE
                             <x-filament::button
+                            class="bg-red-800"
                                 wire:click="create"
                                 type="submit"
                                 size="sm"
