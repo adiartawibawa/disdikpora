@@ -5,6 +5,7 @@ namespace App\Livewire\Users\Permohonan;
 use App\Models\Layanan;
 use App\Models\Permohonan;
 use App\Models\PermohonanStatus;
+use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
@@ -198,7 +199,13 @@ class CreatePermohonan extends Component implements HasForms
                             </x-filament::button>
                         BLADE)
                     )
-                ),
+                )
+                    ->nextAction(fn (Action $action) => $action->extraAttributes([
+                        'class' => 'bg-red-800',
+                    ]))
+                    ->previousAction(fn (Action $action) => $action->extraAttributes([
+                        'class' => 'bg-red-800',
+                    ])),
             ])
             ->statePath('data');
     }
