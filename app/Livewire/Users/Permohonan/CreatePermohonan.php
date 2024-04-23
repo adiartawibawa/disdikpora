@@ -3,18 +3,25 @@
 namespace App\Livewire\Users\Permohonan;
 
 use App\Models\Layanan;
+use App\Models\Permohonan;
+use App\Models\PermohonanStatus;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Wizard;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\HtmlString;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Illuminate\Support\Str;
 
 class CreatePermohonan extends Component implements HasForms
 {
@@ -52,9 +59,13 @@ class CreatePermohonan extends Component implements HasForms
                     case 'image':
                         // Handle untuk tipe 'image' di sini
                         // Misalnya, Anda dapat menggunakan ImageInput jika ada
-                        $inputField = SpatieMediaLibraryFileUpload::make($field['nama'])
+                        $inputField = FileUpload::make($field['nama'])
                             ->label($field['desc'])
-                            ->collection($field['nama'])
+                            ->getUploadedFileNameForStorageUsing(
+                                fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                                    ->prepend(Str::slug('image ' . Date::now() . ' ' . auth()->user()->name . '-')),
+                            )
+                            ->directory('permohonan/images/')
                             ->required($field['required']);
                         break;
 
@@ -64,7 +75,7 @@ class CreatePermohonan extends Component implements HasForms
                         $inputField = FileUpload::make($field['nama'])
                             ->getUploadedFileNameForStorageUsing(
                                 fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
-                                    ->prepend('attachment-'),
+                                    ->prepend(Str::slug('attachment ' . Date::now() . ' ' . auth()->user()->name . '-')),
                             )
                             ->directory('permohonan/attachments/')
                             ->acceptedFileTypes(['application/pdf'])
@@ -110,9 +121,13 @@ class CreatePermohonan extends Component implements HasForms
                     case 'image':
                         // Handle untuk tipe 'image' di sini
                         // Misalnya, Anda dapat menggunakan ImageInput jika ada
-                        $inputField = SpatieMediaLibraryFileUpload::make($field['nama'])
+                        $inputField = FileUpload::make($field['nama'])
                             ->label($field['desc'])
-                            ->collection($field['nama'])
+                            ->getUploadedFileNameForStorageUsing(
+                                fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                                    ->prepend(Str::slug('image ' . Date::now() . ' ' . auth()->user()->name . '-')),
+                            )
+                            ->directory('permohonan/images/')
                             ->required($field['required']);
                         break;
 
@@ -122,7 +137,7 @@ class CreatePermohonan extends Component implements HasForms
                         $inputField = FileUpload::make($field['nama'])
                             ->getUploadedFileNameForStorageUsing(
                                 fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
-                                    ->prepend('attachment-'),
+                                    ->prepend(Str::slug('attachment ' . Date::now() . ' ' . auth()->user()->name . '-')),
                             )
                             ->directory('permohonan/attachments/')
                             ->acceptedFileTypes(['application/pdf'])
@@ -152,14 +167,64 @@ class CreatePermohonan extends Component implements HasForms
                 Wizard::make([
                     Wizard\Step::make('Prasyarat')
                         ->description('Prasyarat permohonan untuk dilengkapi')
-                        ->schema($prasyaratFields),
+                        ->schema([
+                            Repeater::make('prasyarat')
+                                ->schema($prasyaratFields)
+                                ->addable(false)
+                                ->deletable(false)
+                                ->reorderable(false)
+                                ->reorderableWithDragAndDrop(false)
+                        ]),
                     Wizard\Step::make('Formulir')
                         ->description('Dokumen permohonan untuk dilengkapi')
-                        ->schema($formFields),
+                        ->schema([
+                            Repeater::make('formulir')
+                                ->schema($formFields)
+                                ->addable(false)
+                                ->deletable(false)
+                                ->reorderable(false)
+                                ->reorderableWithDragAndDrop(false)
+                        ]),
 
-                ]),
+                ])->submitAction(
+                    new HtmlString(
+                        Blade::render(<<<BLADE
+                            <x-filament::button
+                                wire:click="create"
+                                type="submit"
+                                size="sm"
+                            >
+                                Submit
+                            </x-filament::button>
+                        BLADE)
+                    )
+                ),
             ])
             ->statePath('data');
+    }
+
+    public function create()
+    {
+        $form = $this->form->getState();
+
+        $permohonan = Permohonan::create([
+            'layanan_id' => $this->layanan->id,
+            'prasyarat' => $form['prasyarat'],
+            'formulir' => $form['formulir']
+        ]);
+
+        $status = $permohonan->status()->create([
+            'status' => PermohonanStatus::DIKIRIM,
+            'note' => 'Permohonan baru saja dibuat.',
+        ]);
+
+        Notification::make()
+            ->title('Saved successfully')
+            ->body($status->note)
+            ->icon('heroicon-o-document-text')
+            ->iconColor('success')
+            ->seconds(5)
+            ->send();
     }
 
     #[Layout('layouts.app')]

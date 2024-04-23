@@ -19,9 +19,9 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('permohonan_status', function (Blueprint $table) {
+        Schema::create('permohonan_statuses', function (Blueprint $table) {
             $table->id();
-            $table->morphs('permohonan');
+            $table->uuidMorphs('permohonan');
             $table->char('status')->default(0); //0:dikirim; 1:diproses; 2:dikembalikan; 3:berhasil; 4:gagal
             $table->text('note');
             $table->timestamps();

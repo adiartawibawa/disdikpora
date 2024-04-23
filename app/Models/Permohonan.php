@@ -18,8 +18,7 @@ class Permohonan extends Model implements HasMedia
     protected $fillable = [
         'layanan_id',
         'prasyarat',
-        'formulir',
-        'is_active'
+        'formulir'
     ];
 
     protected $casts = [
