@@ -8,9 +8,11 @@ use App\Models\PermohonanStatus;
 use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Wizard;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -46,50 +48,75 @@ class CreatePermohonan extends Component implements HasForms
             foreach ($prasyarat as $field) {
                 switch ($field['type']) {
                     case 'string':
-                        $inputField = TextInput::make($field['nama'])
-                            ->label($field['desc'])
-                            ->required($field['required']);
+                        $inputField =
+                            [
+                                TextInput::make('value')
+                                    ->label($field['desc'])
+                                    ->required($field['required']),
+                                TextInput::make('type')->default($field['type'])->visible(false),
+                                Toggle::make('is_valid')->default(false)->visible(false)
+                            ];
                         break;
 
                     case 'text':
-                        $inputField = Textarea::make($field['nama'])
-                            ->label($field['desc'])
-                            ->required($field['required']);
+                        $inputField =
+                            [
+                                Textarea::make('value')
+                                    ->label($field['desc'])
+                                    ->required($field['required']),
+                                TextInput::make('type')->default($field['type'])->visible(false),
+                                Toggle::make('is_valid')->default(false)->visible(false)
+                            ];
                         break;
 
                     case 'image':
                         // Handle untuk tipe 'image' di sini
                         // Misalnya, Anda dapat menggunakan ImageInput jika ada
-                        $inputField = FileUpload::make($field['nama'])
-                            ->label($field['desc'])
-                            ->getUploadedFileNameForStorageUsing(
-                                fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
-                                    ->prepend(Str::slug('image ' . Date::now() . ' ' . auth()->user()->name . '-')),
-                            )
-                            ->directory('permohonan/images/')
-                            ->required($field['required']);
+                        $inputField =
+                            [
+                                FileUpload::make('value')
+                                    ->label($field['desc'])
+                                    ->getUploadedFileNameForStorageUsing(
+                                        fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                                            ->prepend(Str::slug('image ' . Date::now() . ' ' . auth()->user()->name . '-')),
+                                    )
+                                    ->directory('permohonan/images/')
+                                    ->required($field['required']),
+                                TextInput::make('type')->default($field['type'])->visible(false),
+                                Toggle::make('is_valid')->default(false)->visible(false)
+                            ];
                         break;
 
                     case 'file':
                         // Handle untuk tipe 'file' di sini
                         // Misalnya, Anda dapat menggunakan FileInput jika ada
-                        $inputField = FileUpload::make($field['nama'])
-                            ->getUploadedFileNameForStorageUsing(
-                                fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
-                                    ->prepend(Str::slug('attachment ' . Date::now() . ' ' . auth()->user()->name . '-')),
-                            )
-                            ->directory('permohonan/attachments/')
-                            ->acceptedFileTypes(['application/pdf'])
-                            ->label($field['desc'])
-                            ->required($field['required']);
+                        $inputField =
+                            [
+                                FileUpload::make('value')
+                                    ->getUploadedFileNameForStorageUsing(
+                                        fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
+                                            ->prepend(Str::slug('attachment ' . Date::now() . ' ' . auth()->user()->name . '-')),
+                                    )
+                                    ->directory('permohonan/attachments/')
+                                    ->acceptedFileTypes(['application/pdf'])
+                                    ->label($field['desc'])
+                                    ->required($field['required']),
+                                TextInput::make('type')->default($field['type'])->visible(false),
+                                Toggle::make('is_valid')->default(false)->visible(false)
+                            ];
                         break;
 
                     case 'date':
                         // Handle untuk tipe 'date' di sini
                         // Misalnya, Anda dapat menggunakan DateInput jika ada
-                        $inputField = DatePicker::make($field['nama'])
-                            ->label($field['desc'])
-                            ->required($field['required']);
+                        $inputField =
+                            [
+                                DatePicker::make('value')
+                                    ->label($field['desc'])
+                                    ->required($field['required']),
+                                TextInput::make('type')->default($field['type'])->visible(false),
+                                Toggle::make('is_valid')->default(false)->visible(false)
+                            ];
                         break;
 
                     default:
@@ -99,11 +126,12 @@ class CreatePermohonan extends Component implements HasForms
                 }
                 $prasyaratFields[] = $inputField;
             }
+            // dd($prasyaratFields);
         }
 
         $formulir = $this->layanan->formulir;
         $formFields = [];
-        // Cek apakah prasyarat tidak kosong sebelum melakukan iterasi
+        // Cek apakah formulir tidak kosong sebelum melakukan iterasi
         if (!empty($formulir)) {
             foreach ($formulir as $field) {
                 switch ($field['type']) {
@@ -168,14 +196,17 @@ class CreatePermohonan extends Component implements HasForms
                 Wizard::make([
                     Wizard\Step::make('Prasyarat')
                         ->description('Prasyarat permohonan untuk dilengkapi')
-                        ->schema([
-                            Repeater::make('prasyarat')
-                                ->schema($prasyaratFields)
-                                ->addable(false)
-                                ->deletable(false)
-                                ->reorderable(false)
-                                ->reorderableWithDragAndDrop(false)
-                        ]),
+                        ->schema(
+                            $prasyaratFields[3]
+                            // [
+                            //     Repeater::make('prasyarat')
+                            //         ->schema([$prasyaratFields[2]])
+                            //         ->addable(false)
+                            //         ->deletable(false)
+                            //         ->reorderable(false)
+                            //         ->reorderableWithDragAndDrop(false)
+                            // ]
+                        ),
                     Wizard\Step::make('Formulir')
                         ->description('Dokumen permohonan untuk dilengkapi')
                         ->schema([
