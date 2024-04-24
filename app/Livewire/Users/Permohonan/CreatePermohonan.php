@@ -222,7 +222,7 @@ class CreatePermohonan extends Component implements HasForms
         ]);
 
         $status = $permohonan->status()->create([
-            'status' => PermohonanStatus::DIKIRIM,
+            'status' => PermohonanStatus::DIBUAT,
             'note' => 'Permohonan baru saja dibuat.',
         ]);
 
