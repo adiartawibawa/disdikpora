@@ -13,9 +13,11 @@
                     <small class="text-sm text-red-500">Estimasi layanan : {{ $layanan->estimasi }} Hari kerja</small>
                 </div>
             </div>
-            @isset($this->form)
+            {{-- @isset($this->form)
                 {{ $this->form }}
-            @endisset
+            @endisset --}}
+
+            @livewire('users.permohonan.form', ['prasyarat' => $layanan->prasyarat, 'formulir' => $layanan->formulir, 'id' => $layanan->id])
         </div>
     </div>
 </div>
