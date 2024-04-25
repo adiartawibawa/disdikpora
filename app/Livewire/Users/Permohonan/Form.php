@@ -293,30 +293,32 @@ class Form extends Component implements HasForms
         // Inisialisasi array kosong untuk menyimpan hasil konversi
         $rawData = [];
         // Looping melalui data yang diberikan
-        foreach ($data as $key => $value) {
+        foreach ($data[0] as $key => $value) {
             // Memisahkan nama field dan informasi tambahan
             $parts = explode('-', $key);
 
-            // Mengidentifikasi nama kelompok data berdasarkan semua kata sebelum kata terakhir yang berisi "value", "desc", "type", dan "valid"
-            $group = '';
-            for ($i = 0; $i < count($parts) - 1; $i++) {
-                if (in_array($parts[$i], ['value', 'desc', 'type', 'valid'])) {
+            // Mengambil bagian nama sebelum kata 'value', 'desc', 'type', 'valid'
+            $groupName = '';
+            foreach ($parts as $part) {
+                if (in_array($part, ['value', 'desc', 'type', 'valid'])) {
                     break;
                 }
-                $group .= ($group ? '-' : '') . $parts[$i];
+                $groupName .= ($groupName ? '-' : '') . $part;
             }
 
             // Memastikan bahwa setiap kelompok data memiliki minimal 1 kunci dengan properti "value", "desc", "type", dan "valid"
-            if (!isset($rawData[$group])) {
-                $rawData[$group] = [];
+            if (!isset($rawData[$groupName])) {
+                $rawData[$groupName] = [];
             }
 
             // Menambahkan data ke dalam kelompok yang sesuai
             $property = end($parts);
-            $rawData[$group][$property] = $value;
+            $rawData[$groupName][$property] = $value;
         }
 
-        // return json_encode(array_values($rawData));
-        return array_values($rawData);
+        // Mengubah struktur array untuk menghasilkan array multidimensi
+        $finalData = array_values($rawData);
+
+        return $finalData;
     }
 }
