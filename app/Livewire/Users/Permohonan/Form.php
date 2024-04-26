@@ -79,7 +79,7 @@ class Form extends Component implements HasForms
                                     fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
                                         ->prepend(Str::slug('image ' . Date::now() . ' ' . auth()->user()->name . '-')),
                                 )
-                                ->directory('permohonan/images/')
+                                ->directory('permohonan/images')
                                 ->required($prasyarat['required']),
                             Hidden::make(Str::slug($prasyarat['nama'] . ' desc'))->default($prasyarat['desc']),
                             Hidden::make(Str::slug($prasyarat['nama'] . ' type'))->default($prasyarat['type']),
@@ -94,7 +94,7 @@ class Form extends Component implements HasForms
                                     fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
                                         ->prepend(Str::slug('attachment ' . Date::now() . ' ' . auth()->user()->name . '-')),
                                 )
-                                ->directory('permohonan/attachments/')
+                                ->directory('permohonan/attachments')
                                 ->acceptedFileTypes(['application/pdf'])
                                 ->label($prasyarat['desc'])
                                 ->required($prasyarat['required']),
@@ -159,7 +159,7 @@ class Form extends Component implements HasForms
                                     fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
                                         ->prepend(Str::slug('image ' . Date::now() . ' ' . auth()->user()->name . '-')),
                                 )
-                                ->directory('permohonan/images/')
+                                ->directory('permohonan/images')
                                 ->required($formulir['required']),
                             Hidden::make(Str::slug($formulir['nama'] . ' desc'))->default($formulir['desc']),
                             Hidden::make(Str::slug($formulir['nama'] . ' type'))->default($formulir['type']),
@@ -174,7 +174,7 @@ class Form extends Component implements HasForms
                                     fn (TemporaryUploadedFile $file): string => (string) str($file->getClientOriginalName())
                                         ->prepend(Str::slug('attachment ' . Date::now() . ' ' . auth()->user()->name . '-')),
                                 )
-                                ->directory('permohonan/attachments/')
+                                ->directory('permohonan/attachments')
                                 ->acceptedFileTypes(['application/pdf'])
                                 ->label($formulir['desc'])
                                 ->required($formulir['required']),

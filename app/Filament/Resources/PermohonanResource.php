@@ -6,12 +6,19 @@ use App\Filament\Resources\PermohonanResource\Pages;
 use App\Filament\Resources\PermohonanResource\RelationManagers;
 use App\Models\Permohonan;
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Wizard;
+use Filament\Forms\Components\Wizard\Step;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PermohonanResource extends Resource
 {
@@ -28,12 +35,83 @@ class PermohonanResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('layanan_id')
-                    ->relationship('layanan', 'id')
-                    ->required(),
-                Forms\Components\Repeater::make('prasyarat')
+                    ->relationship('layanan', 'nama')
+                    ->required()
                     ->columnSpanFull(),
-                Forms\Components\Repeater::make('formulir')
-                    ->columnSpanFull(),
+                Wizard::make([
+                    Step::make('Prasyarat')
+                        ->description('Prasyarat permohonan yang diajukan')
+                        ->schema([
+                            Forms\Components\Repeater::make('prasyarat')->schema(function (Get $get): array {
+                                switch ($get('type')) {
+                                    case 'string':
+                                        $formField = TextInput::make('value');
+                                        break;
+                                    case 'text':
+                                        $formField = Textarea::make('value');
+                                        break;
+                                    case 'image':
+                                        $formField = SpatieMediaLibraryFileUpload::make('value')->getUploadedFiles();
+                                        break;
+                                    case 'file':
+                                        $formField = FileUpload::make('value')->downloadable();
+                                        break;
+                                    case 'date':
+                                        $formField = DatePicker::make('value')->displayFormat(function (): string {
+                                            return 'd/m/Y';
+                                        });
+                                        break;
+                                    default:
+                                        $formField = TextInput::make('value');
+                                }
+                                return [
+                                    $formField,
+                                    Textarea::make('catatan'),
+                                    Toggle::make('valid'),
+                                ];
+                            })->addable(false)
+                                ->deletable(false)
+                                ->reorderable(false)
+                                ->reorderableWithDragAndDrop(false)
+                                ->columnSpanFull(),
+                        ]),
+                    Step::make('Formulir')
+                        ->description('Formulir permohonan yang diajukan')
+                        ->schema([
+                            Forms\Components\Repeater::make('formulir')->schema(function (Get $get): array {
+                                switch ($get('type')) {
+                                    case 'string':
+                                        $formField = TextInput::make('value');
+                                        break;
+                                    case 'text':
+                                        $formField = Textarea::make('value');
+                                        break;
+                                    case 'image':
+                                        $formField = SpatieMediaLibraryFileUpload::make('value')->getUploadedFiles();
+                                        break;
+                                    case 'file':
+                                        $formField = FileUpload::make('value')->downloadable();
+                                        break;
+                                    case 'date':
+                                        $formField = DatePicker::make('value')->displayFormat(function (): string {
+                                            return 'd/m/Y';
+                                        });
+                                        break;
+                                    default:
+                                        $formField = TextInput::make('value');
+                                }
+                                return [
+                                    $formField,
+                                    Textarea::make('catatan'),
+                                    Toggle::make('valid'),
+                                ];
+                            })->addable(false)
+                                ->deletable(false)
+                                ->reorderable(false)
+                                ->reorderableWithDragAndDrop(false)
+                                ->columnSpanFull(),
+                        ])
+                ])->columnSpanFull(),
             ]);
     }
 
